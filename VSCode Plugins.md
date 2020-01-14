@@ -24,7 +24,7 @@
 
 ## [Output Colorizer](https://marketplace.visualstudio.com/items?itemName=IBM.output-colorizer)
 
-## [Path Autocomplete](https://marketplace.visualstudio.com/items?itemName=ionutvmi.path-autocomplete)
+## [Path Intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense)
 
 ## [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
@@ -39,3 +39,9 @@
 ## [vscode-styled-components](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components)
 
 ## [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
+
+## [GraphQL](https://marketplace.visualstudio.com/items?itemName=Prisma.vscode-graphql)
+
+## [indent-rainbow](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow)
+
+## 
