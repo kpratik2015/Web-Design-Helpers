@@ -1,0 +1,19 @@
+# DockerFile for dev. Only one DockerFile at a time. Use it only for dev purpose
+
+FROM node:12
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Install app dependencies
+COPY package*.json ./
+
+RUN npm Install
+
+RUN npm install -g nodemon
+
+# Bundle app source
+COPY . .
+
+EXPOSE 4005
+CMD [ "nodemon", "-L", "server.js" ]
