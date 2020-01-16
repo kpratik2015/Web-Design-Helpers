@@ -1,0 +1,215 @@
+// ---------------------------------------------
+// GLOBALS
+
+
+// ---------------------------------------------
+// GLOBALS: RESPONSIVE IMAGES, HTML5 VIDEOS, SVGS
+
+img, video, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+// Hack for old Android devices to calculate height correctly
+svg {
+  max-height: 100%;
+}
+
+
+// ---------------------------------------------
+// GLOBALS: FULL WIDTH
+// Use for images, HTML5 videos and any element which needs to fill up its parent's width
+
+.full-width {
+  display: block;
+  width: 100%;
+}
+
+
+// ---------------------------------------------
+// GLOBALS: PADDING: RESET
+// Resets padding on all sides
+
+.padding-reset {
+  padding: 0 !important;
+}
+
+
+// ---------------------------------------------
+// GLOBALS: MARGINS: RESET
+// Resets margins on all sides
+
+.margin-reset {
+  margin: 0 !important;
+}
+
+
+// ---------------------------------------------
+// GLOBALS: ALIGNMENT: CENTER: HORIZONTAL (USES AUTO MARGINS)
+// Use for horizontally centering elements
+// Adds a block display so auto margins also work on inline and inline-block elements
+
+@mixin center-element {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.center-element {
+  @include center-element;
+}
+
+
+// ---------------------------------------------
+// GLOBALS: ALIGNMENT: INLINE & INLINE-BLOCK ELEMENTS
+// Helper classes for vertical alignment with inline-block elements
+
+.vertical-align-top {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.vertical-align-middle {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.vertical-align-bottom {
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+
+// ---------------------------------------------
+// GLOBALS: ALIGNMENT: VERTICAL AND ABSOLUTE CENTER
+// Uses absolute positioning to center
+// Ensure a parent with position: relative wraps the centered element
+
+@mixin vertical-center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.vertical-center {
+  @include vertical-center;
+}
+
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);  
+}
+
+ .absolute-center {
+  @include absolute-center;
+}
+
+// Use this class to wrap absolutely centered elements
+.position-relative {
+  position: relative;
+}
+
+
+// ---------------------------------------------
+// GLOBALS: BORDER RADIUS
+// Generates classes for border-radius on all sides
+// E.g., border-radius, border-radius-lg, border-radius-xl 
+
+// Sass Map to store border radius values
+$border-radius-map: (
+  "border-radius": $border-radius,
+  "border-radius-lg": $border-radius-lg,
+  "border-radius-xl": $border-radius-xl
+);
+
+// @each Sass loop to generate classes
+@each $name, $value in $border-radius-map {
+  .#{$name} {
+    border-radius: $value;
+  }
+}
+
+
+// ---------------------------------------------
+// GLOBALS: ICONS
+
+// Icons: Sizes
+@mixin icon-size-lg {
+  font-size: $icon-size-lg;
+}
+
+.icon-size-lg {
+  @include icon-size-lg;
+}
+
+@mixin icon-size-xl {
+  font-size: $icon-size-xl;
+}
+
+.icon-size-xl {
+  @include icon-size-xl;
+}
+
+@mixin icon-size-xxl {
+  font-size: $icon-size-xxl;
+}
+
+.icon-size-xxl {
+  @include icon-size-xxl;
+}
+
+// Icons: Spacing
+// Adds left and right spacing via mixins and classes.
+// Useful for icons in buttons, as bullet points in lists, etc.
+
+@mixin icon-left {
+  margin-right: $icon-spacing;
+}
+
+.icon-left {
+  @include icon-left;
+}
+
+@mixin icon-left-lg {
+  margin-right: $icon-spacing-lg;
+}
+
+.icon-left-lg {
+  @include icon-left-lg;
+}
+
+@mixin icon-right {
+  margin-left: $icon-spacing;
+}
+
+.icon-right {
+  @include icon-right;
+}
+
+@mixin icon-right-lg {
+  margin-left: $icon-spacing-lg;
+}
+
+.icon-right-lg {
+  @include icon-right-lg;
+}
+
+
+// ---------------------------------------------
+// GLOBALS: SCREEN READERS
+// Screen readers: Show content only on screen readers: Mixin
+@mixin show-on-screen-readers {
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px); /* Fallback: Older Browsers */
+  clip-path: polygon(0px 0px, 0px 0px,0px 0px, 0px 0px);
+  white-space: nowrap;
+}
+
+.show-on-screen-readers {
+  @include show-on-screen-readers;
+}

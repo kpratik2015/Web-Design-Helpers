@@ -1,0 +1,279 @@
+// ---------------------------------------------
+// FORMS
+
+
+// ---------------------------------------------
+// FORMS: OVERRIDES FOR BROWSER QUIRKS
+
+input, select {
+  border-radius: 0; // Removes border-radius on iOS
+  box-shadow: none; // Removes red border on inputs with 'required' attribute: Firefox
+  background-clip: padding-box; // Removes inset shadow on inputs on iOS
+}
+
+input[type="submit"].btn {
+  -webkit-appearance: none;  // Fix for inputs with type submit to ensure styles are honored on iOS
+}
+
+
+// ---------------------------------------------
+// FORMS: FIELDS
+// Fields provide spacing between form elements
+
+.field {
+  margin-bottom: $spacing-2;
+}
+
+
+// ---------------------------------------------
+// FORMS: LABELS
+
+// Label: Default
+.label {
+  color: $gray-coal;
+  font-weight: $font-bold;
+  margin-bottom: $spacing;
+  display: block;
+}
+
+// Label: Size: Large: Modifier
+.label--lg {
+  font-size: $font-size-lg;
+}
+
+// Label: Inverse Styles: Modifier
+.label--inverse {
+  color: $white;
+}
+
+
+// ---------------------------------------------
+// FORMS: PLACEHOLDER: MIXIN
+
+// Use the mixin like this:
+// @include input-placeholder { color: #000; }
+@mixin input-placeholder {
+  &.placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder {
+    @content;
+  }
+  
+  &::-moz-placeholder {
+    @content;
+  }
+  
+  &:-ms-input-placeholder {
+    @content;
+  }
+  
+  &::-webkit-input-placeholder { 
+    @content;
+  }
+}
+
+
+// ---------------------------------------------
+// FORMS: FOCUS STATE: MIXIN
+@mixin form-focus {
+  outline: 0;
+  border: 1px solid $color-focus;
+  transition: $transition-linear;
+}
+
+
+// ---------------------------------------------
+// FORMS: TEXT INPUTS, TEXTAREAS, SELECTS
+
+// Form Styling: Text Inputs, Textareas, Selects: Mixin
+//  - All parameters have defaults
+//  - Parameters:
+//    - $color {string} : Text color
+//    - $color-bg {string} : Background color
+//    - $color-border {string} : Border color
+//    - $color-placeholder {string} : Placeholder color
+@mixin form-text($color: $gray-coal, $color-bg: $white, $color-border: $color-input-border, $color-placeholder: $color-input-placeholder) {
+  color: $color;
+  background-color: $color-bg;
+  border: 1px solid $color-border;
+  border-radius: $border-radius-xl;
+  font-size: $font-size;
+  font-family: $font-family-1;
+  line-height: $line-height;
+  padding: $btn-padding-v ($spacing * 1.5);
+  display: block;
+  width: 100%;
+  transition: $transition-linear;
+
+  @include input-placeholder {
+    color: $color-placeholder;
+  }
+
+  &:focus {
+    @include form-focus;
+  }
+}
+
+// Forms: Use this class for text inputs, textareas and selects
+.form-text {
+  @include form-text;
+}
+
+// Selects: Additional styling: Modifier
+.form-text--select {
+  background-image: url(../../assets/svg/icons/icon-chevron-down.svg);
+  background-repeat: no-repeat;
+  background-position: right $spacing center;
+  background-size: 18px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+  
+// Textareas: Basic styling
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+// Inverse Styles: Text inputs, textareas and selects
+// Use on dark backgrounds
+// Form text inverse: Mixin
+@mixin form-text-inverse {
+  @include form-text($color: $white, $color-bg: transparent, $color-border: $white, $color-placeholder: $gray-cloud);
+}
+
+.form-text-inverse {
+  @include form-text-inverse;
+}
+
+
+// ---------------------------------------------
+// FORMS: INPUTS: GROUP
+// Use for text inputs and textareas with a label or icon that appears to be inside the input
+
+// Input Group Mixin
+//  - All parameters have defaults
+//  - Parameters:
+//    - $color {string} : Text color
+//    - $color-bg {string} : Background color
+//    - $color-border {string} : Border color
+@mixin input-group($color: $color-font, $color-bg: $white, $color-border: $color-input-border) {
+  color: $color;
+  background-color: $color-bg;
+  border: 1px solid $color-border;
+  border-radius: $border-radius-xl;
+  display: flex;
+
+  &:focus-within {
+    @include form-focus;
+  }
+}
+
+// Input Groups: Default style
+.input-group {
+  @include input-group;
+}
+
+.input-group-text {
+  @include form-text($color-bg: transparent);
+  border: none;
+
+  &:focus {
+    border: none;
+  }
+}
+
+.input-group-label {
+  color: $gray-cement;
+  font-weight: $font-bold;
+  text-transform: uppercase;
+  padding: 0 ($spacing * 1.5) 0 0;
+  align-self: center;
+}
+
+
+// ---------------------------------------------
+// FORMS: TEXT INPUTS, TEXTAREAS, SELECTS: SIZES
+
+// Size: Small: Modifier
+@mixin form-text--sm {
+  font-size: $font-size-sm;
+  padding: $btn-padding-v-sm $spacing;
+}
+
+.form-text--sm {
+  @include form-text--sm;
+}
+
+
+// ---------------------------------------------
+// FORMS: INPUT: FILE: CUSTOM: WITH IMAGE PREVIEW
+// Uses Javascript (input-file-custom.js)
+
+.input-file {
+  opacity: 0;
+  position: absolute;
+
+  &:focus + .input-file-label {
+    outline: 1px solid $color-focus;
+  }
+}
+
+.input-file-label {
+  font-size: $font-size-lg;
+  text-transform: capitalize;
+  padding-left: ($spacing * 6);
+  padding-right: ($spacing * 6);
+  position: relative;
+}
+
+.input-file-img {
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  object-fit: cover;
+  display: block;
+  position: absolute;
+  left: -2px;
+  top: -1px;
+}
+
+
+// ---------------------------------------------
+// FORMS: STATES
+
+// States: Error
+.form-error {
+  border: 1px solid $color-error;
+}
+
+// States: Disabled: Mixin
+@mixin form-disabled {
+  color: $gray-cement;
+  background-color: $color-disabled;
+  border-color: $color-disabled;
+  opacity: 0.7;
+  cursor: not-allowed;
+
+  input, textarea, select {
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    border-color: $color-disabled;
+  }
+}
+
+.form-disabled {
+  @include form-disabled;
+}
+
+// States: Required
+.form-required {
+  &:after {
+    content: '*';
+  }
+}
