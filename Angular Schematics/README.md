@@ -96,3 +96,15 @@ They are used as a basis for the new files added to a target project when a sche
 strings module contains useful functions liek dasherize for template naming. Other functions are: camelize, decamelize, classify, underscore, capitalize and levenshtein
 
 ### Using Template Expressions Inside Files
+
+Templating supports Embedded JS language.
+
+```
+<%# This will not appear in the generated output %>
+// this will appear in the generated output
+
+const unescaped = '<%= "<" %>';
+const escaped = '<%- "<" %>';
+
+<% if (true) { %> const conditionalTest = true;<%> } %>
+```
