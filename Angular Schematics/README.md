@@ -86,3 +86,7 @@ schematics .:order-wizard --name=test
 ## Template files
 
 They are used as a basis for the new files added to a target project when a schematic is run by the Angular CLI.
+
+**Remember to rebuild the schematic after making changes!**
+
+**Schematics run in dry-run mode by default when invoked with the Schematics CLI!**
