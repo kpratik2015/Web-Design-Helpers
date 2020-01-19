@@ -94,3 +94,5 @@ They are used as a basis for the new files added to a target project when a sche
 ### Filenames
 
 strings module contains useful functions liek dasherize for template naming. Other functions are: camelize, decamelize, classify, underscore, capitalize and levenshtein
+
+### Using Template Expressions Inside Files
