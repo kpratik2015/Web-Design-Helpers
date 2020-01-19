@@ -108,3 +108,25 @@ const escaped = '<%- "<" %>';
 
 <% if (true) { %> const conditionalTest = true;<%> } %>
 ```
+
+## Building Extra Capabilities into a Schematic
+
+- How to read the target project's config file
+
+  - The angular.json config file contains information about all of the different projects in an Angular workspace.
+
+- How to update files in the target project
+
+  - Being able to edit files is essential for adding features such as adding an import statement for the generated module tot he root module of the target project
+
+- How to chain multiple rules together
+
+  - Organising schematics operations into descrete rule factories is a great way to improve maintainability long-term
+
+- How to parse files to insert new content in the correct location
+
+  - Itt is not enough to just insert code - we must insert it in the correct location within a file for it to work correctly
+
+- How to run NPM commands as part of the schematic's execution
+
+- How to run other schematics from within our schematic
