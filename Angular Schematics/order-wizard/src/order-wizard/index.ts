@@ -1,7 +1,24 @@
-import { Rule, SchematicContext, Tree, apply, url, mergeWith, MergeStrategy, move, template, filter, SchematicsException, chain, TaskId } from '@angular-devkit/schematics';
+import {
+  Rule,
+  SchematicContext,
+  Tree,
+  apply,
+  url,
+  mergeWith,
+  MergeStrategy,
+  move,
+  template,
+  filter,
+  SchematicsException,
+  chain,
+  TaskId
+} from '@angular-devkit/schematics';
 import { normalize, strings, experimental } from '@angular-devkit/core';
 import * as ts from 'typescript';
-import { NodePackageInstallTask, RunSchematicTask } from '@angular-devkit/schematics/tasks';
+import {
+  NodePackageInstallTask,
+  RunSchematicTask
+} from '@angular-devkit/schematics/tasks';
 import { NodePackageTaskOptions } from '@angular-devkit/schematics/tasks/node-package/options';
 
 let materialInstallTaskId: TaskId;
@@ -10,7 +27,9 @@ let materialInstallTaskId: TaskId;
 // per file.
 export function orderWizard(_options: any): Rule {
   return (tree: Tree, _context: SchematicContext) => {
-    const folderPath = normalize(strings.dasherize(_options.path + '/' + _options.name));
+    const folderPath = normalize(
+      strings.dasherize(_options.path + '/' + _options.name)
+    );
     const workspace = getWorkspace(_options, tree);
 
     let files = url('./files');
@@ -28,7 +47,12 @@ export function orderWizard(_options: any): Rule {
     const updateModuleRule = updateRootModule(_options, workspace);
     const installMaterialRule = installMaterial();
     const addMaterialRule = addMaterial();
-    const chainedRule = chain([templateRule, updateModuleRule, installMaterialRule, addMaterialRule]);
+    const chainedRule = chain([
+      templateRule,
+      updateModuleRule,
+      installMaterialRule,
+      addMaterialRule
+    ]);
     return chainedRule(tree, _context);
   };
 }
@@ -37,12 +61,15 @@ function specFilter(_options: any): Rule {
   if (_options.spec === 'false') {
     return filter(path => {
       return !path.match(/\.spec\.ts$/) && !path.match(/test\.ts$/);
-    })
+    });
   }
   return filter(path => !path.match(/test\.ts$/));
 }
 
-function getWorkspace(_options: any, tree: Tree): experimental.workspace.WorkspaceSchema {
+function getWorkspace(
+  _options: any,
+  tree: Tree
+): experimental.workspace.WorkspaceSchema {
   const workspace = tree.read('/angular.json');
 
   if (!workspace) {
@@ -52,23 +79,26 @@ function getWorkspace(_options: any, tree: Tree): experimental.workspace.Workspa
   return JSON.parse(workspace.toString());
 }
 
-function updateRootModule(_options: any , workspace: any): Rule {
+function updateRootModule(_options: any, workspace: any): Rule {
   return (tree: Tree, _context: SchematicContext): Tree => {
-    _options.project = (_options.project === 'defaultProject') ?
-                       workspace.defaultProject :
-                       _options.project;
+    _options.project =
+      _options.project === 'defaultProject'
+        ? workspace.defaultProject
+        : _options.project;
 
     const project = workspace.projects[_options.project];
     const moduleName = strings.dasherize(_options.name);
     const exportedModuleName = strings.classify(_options.name);
     const modulePath = strings.dasherize(_options.path);
-    const rootModulePath = `${project.root}/` +
-                           `${project.sourceRoot}/` +
-                           `${project.prefix}/` +
-                           `${project.prefix}.module.ts`;
+    const rootModulePath =
+      `${project.root}/` +
+      `${project.sourceRoot}/` +
+      `${project.prefix}/` +
+      `${project.prefix}.module.ts`;
 
-    const importContent = `import { ${exportedModuleName}Module } ` +
-                          `from './${modulePath}/${moduleName}/${moduleName}.module';`
+    const importContent =
+      `import { ${exportedModuleName}Module } ` +
+      `from './${modulePath}/${moduleName}/${moduleName}.module';`;
 
     const moduleFile = getAsSourceFile(tree, rootModulePath);
     const lastImportEndPos = findlastImportEndPos(moduleFile);
@@ -80,7 +110,7 @@ function updateRootModule(_options: any , workspace: any): Rule {
     tree.commitUpdate(rec);
 
     return tree;
-  }
+  };
 }
 
 function getAsSourceFile(tree: Tree, path: string): ts.SourceFile {
@@ -130,7 +160,7 @@ function findImportArray(file: ts.SourceFile): number {
   return pos;
 }
 
-function installMaterial(): Rule {
+export function installMaterial(): Rule {
   return (tree: Tree, _context: SchematicContext): Tree => {
     const packageJsonPath = '/package.json';
     const materialDepName = '@angular/material';
@@ -158,12 +188,14 @@ function installMaterial(): Rule {
       const options = <NodePackageTaskOptions>{
         packageName: materialDepName
       };
-      materialInstallTaskId = _context.addTask(new NodePackageInstallTask(options));
+      materialInstallTaskId = _context.addTask(
+        new NodePackageInstallTask(options)
+      );
       _context.logger.info('Installing Angular Material');
     }
 
     return tree;
-  }
+  };
 }
 
 function addMaterial(): Rule {
@@ -173,9 +205,12 @@ function addMaterial(): Rule {
       gestures: true,
       animations: true
     };
-    _context.addTask(new RunSchematicTask('@angular/material', 'ng-add', options), [materialInstallTaskId]);
+    _context.addTask(
+      new RunSchematicTask('@angular/material', 'ng-add', options),
+      [materialInstallTaskId]
+    );
     _context.logger.info('Configuring Angular Material');
 
     return tree;
-  }
+  };
 }

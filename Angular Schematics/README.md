@@ -130,3 +130,10 @@ const escaped = '<%- "<" %>';
 - How to run NPM commands as part of the schematic's execution
 
 - How to run other schematics from within our schematic
+
+## Testing a Schematic
+
+- How to stub the files the schematic needs to run
+- How to test the right files are created based on CLI options
+- How to test that the right content is inserted in template and external files
+- How to test that tasks are schedules or not scheduled at the right time
