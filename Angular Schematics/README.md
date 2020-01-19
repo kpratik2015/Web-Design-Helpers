@@ -90,3 +90,7 @@ They are used as a basis for the new files added to a target project when a sche
 **Remember to rebuild the schematic after making changes!**
 
 **Schematics run in dry-run mode by default when invoked with the Schematics CLI!**
+
+### Filenames
+
+strings module contains useful functions liek dasherize for template naming. Other functions are: camelize, decamelize, classify, underscore, capitalize and levenshtein
