@@ -137,3 +137,29 @@ const escaped = '<%- "<" %>';
 - How to test the right files are created based on CLI options
 - How to test that the right content is inserted in template and external files
 - How to test that tasks are schedules or not scheduled at the right time
+
+## Post Production Tasks
+
+**Using local linking to identify issues that unit tests might not pick up**
+
+We should test the schematic locally in order to know it will work in an actual angular project.
+
+In order-wizard execute:
+
+```
+npm link
+```
+
+This makes the component available globally on the local system
+
+Now cd into actual project on which to test the schematic
+
+```
+npm link order-wizard
+```
+
+This creates a symbolic link between the project and the schematic. You can find it in node_modules.
+
+```
+ng g order-wizard:order-wizard --name=checkout
+```
