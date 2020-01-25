@@ -16,5 +16,5 @@ export default {
   public: '/public',
   /**Branch used to edit your document when clicking on Github button. */
   editBranch: 'master',
-  title: 'Empower Docz'
+  title: 'Pratik Design System'
 };

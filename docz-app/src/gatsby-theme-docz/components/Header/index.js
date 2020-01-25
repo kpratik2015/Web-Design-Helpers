@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Box, Flex, useColorMode } from 'theme-ui';
 import { useConfig, useCurrentDoc } from 'docz';
-
+import useDarkMode from 'use-dark-mode';
 import * as styles from './styles';
 import { Edit, Menu, Sun, Github, Moon } from '../Icons';
 import { Logo } from '../Logo';
@@ -14,10 +14,21 @@ export const Header = props => {
   } = useConfig();
   const { edit = true, ...doc } = useCurrentDoc();
   const [colorMode, setColorMode] = useColorMode();
+  const {
+    enable: enableDarkMode,
+    disable: disableDarkMode,
+    value
+  } = useDarkMode();
   const colorSwitchAriaLabel =
     colorMode === 'light' ? 'Activate Dark Mode' : 'Activate Light Mode';
   const toggleColorMode = () => {
-    setColorMode(colorMode === 'light' ? 'dark' : 'light');
+    if (colorMode === 'light') {
+      enableDarkMode();
+      setColorMode('dark');
+    } else {
+      disableDarkMode();
+      setColorMode('light');
+    }
   };
 
   return (

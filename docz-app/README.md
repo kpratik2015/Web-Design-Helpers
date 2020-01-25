@@ -1,3 +1,3 @@
-# Docz Wrapper
+# Just Another Design System
 
-The goal of this wrapper is to accumulate handy react components
+The goal of this is to have an handy design system knowledge.
