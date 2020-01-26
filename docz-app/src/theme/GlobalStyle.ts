@@ -1,5 +1,14 @@
 import { createGlobalStyle } from 'styled-components/macro';
 
+/**
+ * Guidelines:
+ * Ref: https://www.smashingmagazine.com/2009/08/typographic-design-survey-best-practices-from-the-best-blogs/
+ * Header font size ÷ Body copy font size = 1.96.
+ * Line height (pixels) ÷ body copy font size (pixels) = 1.48.
+ * Line length (pixels) ÷ line height (pixels) = 27.8.
+ * Space between paragraphs (pixels) ÷ line height (pixels) = 0.754.
+ */
+
 export const GlobalStyle = createGlobalStyle`
   *, *:before, *:after {
     box-sizing: border-box;
@@ -25,6 +34,25 @@ export const GlobalStyle = createGlobalStyle`
     text-decoration: none;
   }
 
+  h1, h2, h3, h4, form legend {
+    color: ${props => props.theme.text.primary};
+    margin-bottom: ${props => props.theme.space[1]};
+    line-height: ${props => props.theme.lineHeights.heading};
+  }
+
+  h1 { font-size: ${props => props.theme.fontSizes[6]} }
+  h2 { font-size: ${props => props.theme.fontSizes[5]} }
+  h3 { font-size: ${props => props.theme.fontSizes[4]} }
+  h4 { font-size: ${props => props.theme.fontSizes[3]} }
+  h5 { font-size: ${props => props.theme.fontSizes[2]} }
+  h6 { font-size: ${props => props.theme.fontSizes[1]} }
+
+  /**
+  -----------------------------
+  Utility classes
+  -----------------------------
+  */
+
   /**
   * Main content containers
   * 1. Make the container full-width with a maximum width
@@ -32,7 +60,7 @@ export const GlobalStyle = createGlobalStyle`
   * 3. Leave some space on the edges, especially valuable on small screens
   */
   .container {
-    max-width: $max-width; /* 1 */
+    max-width: ${props => `${props.theme.breakpoints[5]}px`}; /* 1 */
     margin-left: auto; /* 2 */
     margin-right: auto; /* 2 */
     padding-left: 20px; /* 3 */
@@ -65,5 +93,12 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     position: absolute;
     width: 1px;
+  }
+
+  /**truncate text if it exceeds parent */
+  .truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 `;

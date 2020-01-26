@@ -59,5 +59,8 @@ declare module 'styled-components' {
       tight: string;
       mega: string;
     };
+    breakpoints: string[];
+    radii: number[] | string[];
+    space: string[];
   }
 }

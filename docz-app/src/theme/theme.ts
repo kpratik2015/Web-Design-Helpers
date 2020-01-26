@@ -68,14 +68,14 @@ const colors = {
   ]
 };
 
-const fontScaleRatio = 1.2;
+const fontScaleRatio = 1.1;
 const typography = {
   fontPrimary: 'Lato',
   fontSecondary: 'Frank Ruhl Libre',
-  fontBaseSize: '1.6rem',
   fontSizes: [
     `calc(1rem / (${fontScaleRatio} * ${fontScaleRatio}))`,
     `calc(1rem / ${fontScaleRatio})`,
+    `1rem`,
     `calc(1rem * ${fontScaleRatio})`,
     `calc(1rem * ${fontScaleRatio * 2})`,
     `calc(1rem * ${fontScaleRatio * 3})`,
@@ -122,9 +122,8 @@ const light = {
 const spacingMultiplier = 1; // rem
 
 const layout = {
-  breakpoints: [32, 48, 64],
+  breakpoints: Object.keys(size),
   radii: [0, 2, 4, 16, 9999, '100%'],
-  maxWidths: [16, 32, 64, 128, 256, 512, 768, 1024, 1536],
   space: [
     `${0.25 * spacingMultiplier}rem`,
     `${0.5 * spacingMultiplier}rem`,
