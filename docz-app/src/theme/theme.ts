@@ -1,3 +1,18 @@
+const size: any = {
+  mobileS: 320,
+  mobileM: 375,
+  mobileL: 425,
+  tablet: 768,
+  laptop: 1024,
+  laptopL: 1440,
+  desktop: 2560
+};
+
+const device = Object.keys(size).reduce<any>((acc, cur) => {
+  acc[cur] = `(min-width: ${size[cur]}px)`;
+  return acc;
+}, {});
+
 /**Color generation: https://codyhouse.co/ds/globals/colors */
 const colors = {
   primaryLighter: 'hsl(202, 95%, 28%)',
@@ -53,19 +68,19 @@ const colors = {
   ]
 };
 
+const fontScaleRatio = 1.2;
 const typography = {
   fontPrimary: 'Lato',
   fontSecondary: 'Frank Ruhl Libre',
   fontBaseSize: '1.6rem',
-  fontScaleRatio: '1.2',
   fontSizes: [
-    '1.4rem', // 0
-    '1.6rem', // 1
-    '1.8rem', // 2
-    '2.2rem', // 3
-    '2.6rem', // 4
-    '3.2rem', // 5
-    '4.0rem' // 6
+    `calc(1rem / (${fontScaleRatio} * ${fontScaleRatio}))`,
+    `calc(1rem / ${fontScaleRatio})`,
+    `calc(1rem * ${fontScaleRatio})`,
+    `calc(1rem * ${fontScaleRatio * 2})`,
+    `calc(1rem * ${fontScaleRatio * 3})`,
+    `calc(1rem * ${fontScaleRatio * 4})`,
+    `calc(1rem * ${fontScaleRatio * 5})`
   ],
   fontWeights: {
     body: 400,
@@ -142,7 +157,8 @@ const dark = {
 const defaultTheme = {
   colors,
   ...typography,
-  ...layout
+  ...layout,
+  ...device
 };
 
 export const lightTheme = { ...defaultTheme, ...light };
