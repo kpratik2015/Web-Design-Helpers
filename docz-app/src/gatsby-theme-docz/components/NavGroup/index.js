@@ -23,7 +23,13 @@ export const NavGroup = ({ item, sidebarRef }) => {
   }, []);
   return (
     <div sx={styles.wrapper} data-testid="nav-group">
-      <div sx={styles.title} onClick={toggleSubheadings}>
+      <div
+        role="button"
+        sx={styles.title}
+        onClick={toggleSubheadings}
+        onKeyPress={toggleSubheadings}
+        tabindex="0"
+      >
         {item.name}
         <ChevronDown sx={styles.chevron({ active: subheadingsVisible })} />
       </div>

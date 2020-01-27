@@ -16,5 +16,6 @@ export default {
   public: '/public',
   /**Branch used to edit your document when clicking on Github button. */
   editBranch: 'master',
-  title: 'Pratik Design System'
+  title: 'Pratik Design System',
+  menu: ['Home', 'Branding']
 };

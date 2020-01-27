@@ -14,11 +14,7 @@ export const Header = props => {
   } = useConfig();
   const { edit = true, ...doc } = useCurrentDoc();
   const [colorMode, setColorMode] = useColorMode();
-  const {
-    enable: enableDarkMode,
-    disable: disableDarkMode,
-    value
-  } = useDarkMode();
+  const { enable: enableDarkMode, disable: disableDarkMode } = useDarkMode();
   const colorSwitchAriaLabel =
     colorMode === 'light' ? 'Activate Dark Mode' : 'Activate Light Mode';
   const toggleColorMode = () => {
@@ -60,7 +56,28 @@ export const Header = props => {
               sx={styles.headerButton}
               onClick={toggleColorMode}
             >
-              {colorMode === 'light' ? <Moon size={15} /> : <Sun size={15} />}
+              <Moon
+                size={15}
+                style={{
+                  position: 'absolute',
+                  transform:
+                    colorMode === 'light'
+                      ? 'translateY(30px)'
+                      : 'translateY(0px)',
+                  transition: 'transform 0.4s ease'
+                }}
+              />
+              <Sun
+                size={15}
+                style={{
+                  position: 'absolute',
+                  transform:
+                    colorMode === 'light'
+                      ? 'translateY(0px)'
+                      : 'translateY(30px)',
+                  transition: 'transform 0.4s ease'
+                }}
+              />
             </button>
           )}
         </Flex>

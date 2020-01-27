@@ -36,14 +36,16 @@ export const menuButton = {
 export const headerButton = {
   ...mixins.centerAlign,
   outline: 'none',
-  p: '12px',
+  p: '18px',
   border: 'none',
   borderRadius: 9999,
   bg: 'header.button.bg',
   color: 'header.button.color',
   fontSize: 0,
   fontWeight: 600,
-  cursor: 'pointer'
+  cursor: 'pointer',
+  overflow: 'hidden',
+  position: 'relative'
 };
 
 export const editButton = {
