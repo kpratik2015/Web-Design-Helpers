@@ -1,16 +1,16 @@
 /** @jsx jsx */
-import { useRef, useState } from 'react'
-import { jsx, Layout as BaseLayout, Main, Container } from 'theme-ui'
-import { Global } from '@emotion/core'
+import { useRef, useState } from 'react';
+import { jsx, Layout as BaseLayout, Main, Container } from 'theme-ui';
+import { Global } from '@emotion/core';
 
-import global from '~theme/global'
-import { Header } from '../Header'
-import { Sidebar } from '../Sidebar'
-import * as styles from './styles'
+import global from '~theme/global';
+import { Header } from '../Header';
+import { Sidebar } from '../Sidebar';
+import * as styles from './styles';
 
 export const Layout = ({ children }) => {
-  const [open, setOpen] = useState(false)
-  const nav = useRef()
+  const [open, setOpen] = useState(false);
+  const nav = useRef();
 
   return (
     <BaseLayout sx={{ '& > div': { flex: '1 1 auto' } }} data-testid="layout">
@@ -25,11 +25,15 @@ export const Layout = ({ children }) => {
             onBlur={() => setOpen(false)}
             onClick={() => setOpen(false)}
           />
-          <Container sx={styles.content} data-testid="main-container">
+          <Container
+            sx={styles.content}
+            data-testid="main-container"
+            className="page-container"
+          >
             {children}
           </Container>
         </div>
       </Main>
     </BaseLayout>
-  )
-}
+  );
+};

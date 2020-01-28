@@ -1,5 +1,5 @@
 // import original module declarations
-import 'styled-components/macro';
+import 'styled-components';
 
 // and extend them!
 declare module 'styled-components' {
@@ -39,7 +39,6 @@ declare module 'styled-components' {
     };
     fontPrimary: string;
     fontSecondary: string;
-    fontBaseSize: string;
     fontSizes: string[];
     fontWeights: {
       body: number;
@@ -62,5 +61,14 @@ declare module 'styled-components' {
     breakpoints: string[];
     radii: number[] | string[];
     space: string[];
+    qBreakpoints: {
+      mobileS: string;
+      mobileM: string;
+      mobileL: string;
+      tablet: string;
+      laptop: string;
+      laptopL: string;
+      desktop: string;
+    };
   }
 }

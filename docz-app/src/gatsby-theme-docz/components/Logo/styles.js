@@ -1,3 +1,5 @@
+import { media } from '~theme/breakpoints';
+
 export const logo = {
   letterSpacing: '-0.02em',
   fontWeight: 600,
@@ -7,6 +9,15 @@ export const logo = {
     height: 30,
     width: 30,
     marginRight: 10
+  },
+  h1: {
+    fontSize: 5,
+    [media.tablet]: {
+      fontSize: 4
+    },
+    [media.mobile]: {
+      fontSize: 3
+    }
   }
 };
 

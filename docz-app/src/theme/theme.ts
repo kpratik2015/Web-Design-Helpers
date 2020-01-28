@@ -1,3 +1,5 @@
+import { DefaultTheme } from 'styled-components';
+
 const size: any = {
   mobileS: 320,
   mobileM: 375,
@@ -8,7 +10,7 @@ const size: any = {
   desktop: 2560
 };
 
-const device = Object.keys(size).reduce<any>((acc, cur) => {
+const qBreakpoints = Object.keys(size).reduce<any>((acc, cur) => {
   acc[cur] = `(min-width: ${size[cur]}px)`;
   return acc;
 }, {});
@@ -110,7 +112,7 @@ const light = {
     input: 'rgba(65,67,78,0.12)'
   },
   text: {
-    primary: colors.shades[5],
+    primary: colors.primary,
     secondary: colors.shades[4],
     tertiary: colors.shades[3],
     quarternary: colors.shades[2],
@@ -123,16 +125,16 @@ const spacingMultiplier = 1; // rem
 
 const layout = {
   breakpoints: Object.keys(size),
-  radii: [0, 2, 4, 16, 9999, '100%'],
+  radii: [`0`, `0.25rem`, `0.4rem`, `1.6rem`, `9999`, '100%'],
   space: [
-    `${0.25 * spacingMultiplier}rem`,
-    `${0.5 * spacingMultiplier}rem`,
-    `${0.75 * spacingMultiplier}rem`,
-    `${1 * spacingMultiplier}rem`,
-    `${1.25 * spacingMultiplier}rem`,
-    `${2 * spacingMultiplier}rem`,
-    `${3.25 * spacingMultiplier}rem`,
-    `${5.25 * spacingMultiplier}rem`
+    `${0.25 * spacingMultiplier}rem`, // 0
+    `${0.5 * spacingMultiplier}rem`, // 1
+    `${0.75 * spacingMultiplier}rem`, // 2
+    `${1 * spacingMultiplier}rem`, // 3
+    `${1.25 * spacingMultiplier}rem`, // 4
+    `${2 * spacingMultiplier}rem`, // 5
+    `${3.25 * spacingMultiplier}rem`, // 6
+    `${5.25 * spacingMultiplier}rem` // 7
   ]
 };
 
@@ -157,8 +159,8 @@ const defaultTheme = {
   colors,
   ...typography,
   ...layout,
-  ...device
+  qBreakpoints
 };
 
-export const lightTheme = { ...defaultTheme, ...light };
-export const darkTheme = { ...defaultTheme, ...dark };
+export const lightTheme: DefaultTheme = { ...defaultTheme, ...light };
+export const darkTheme: DefaultTheme = { ...defaultTheme, ...dark };

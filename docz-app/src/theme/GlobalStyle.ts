@@ -21,6 +21,7 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
   }
   body {
+    -webkit-font-smoothing: antialiased;
     color: ${props => props.theme.text.primary};
     background-color: ${props => props.theme.bg.primary};
     font-size: 10px; /**makes rem calculation easier */
@@ -101,4 +102,19 @@ export const GlobalStyle = createGlobalStyle`
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+
+  .page-container {
+    padding-bottom: 30vh;
+    width: 100%;
+    margin: 0px auto;
+    padding: ${props => props.theme.space[6]};
+    @media ${props => props.theme.qBreakpoints.laptop} {
+      width: 920px;
+    }
+    @media ${props => props.theme.qBreakpoints.mobileL} {
+      padding: ${props => props.theme.space[6]} ${props =>
+  props.theme.space[7]};
+    }
+  }
+  
 `;

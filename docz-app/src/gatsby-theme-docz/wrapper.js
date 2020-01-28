@@ -1,4 +1,9 @@
-import * as React from 'react'
+import * as React from 'react';
+import MyThemeProvider from 'mytheme/MyThemeProvider';
 
-const Wrapper = ({ children }) => <React.Fragment>{children}</React.Fragment>
-export default Wrapper
+const Wrapper = ({ children }) => (
+  <React.Fragment>
+    <MyThemeProvider>{children}</MyThemeProvider>
+  </React.Fragment>
+);
+export default Wrapper;

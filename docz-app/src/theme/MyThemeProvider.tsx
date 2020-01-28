@@ -15,8 +15,10 @@ const MyThemeProvider: React.FC = ({ children }) => {
 
   const body = (
     <React.Fragment>
-      <GlobalStyle />
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        {children}
+      </ThemeProvider>
     </React.Fragment>
   );
 
