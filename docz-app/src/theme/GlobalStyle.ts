@@ -115,6 +115,62 @@ export const GlobalStyle = createGlobalStyle`
       padding: ${props => props.theme.space[6]} ${props =>
   props.theme.space[7]};
     }
+    h2 {
+      margin-top: ${props => props.theme.space[5]};
+      padding-top: 0;
+      &:first-of-type {
+        margin-top: ${props => props.theme.space[6]};
+        padding-top: 0;
+      }
+    }
+  }
+
+  .pr-grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    &--start {
+      align-items: flex-start;
+    }
+    &--stretch {
+      align-items: stretch;
+    }
+    &--center {
+      align-items: center;
+    }
+
+    > * {
+      flex: 0 1 auto;
+      min-width: 0;
+      max-width: 100%;
+      flex-basis: 100%;
+      padding: ${props => props.theme.space[1]};
+    }
+
+    &.as--gutter {
+      margin-left: ${props => `-${props.theme.space[3]}`};
+      margin-top: ${props => `-${props.theme.space[2]}`};
+      margin-bottom: ${props => `-${props.theme.space[2]}`};
+      > * {
+        padding-left: ${props => props.theme.space[3]};
+        padding-top: ${props => props.theme.space[2]};
+        padding-bottom: ${props => props.theme.space[2]};
+        padding-right: 0;
+      }
+    }
+    
+    > *.as--4 {
+      max-width: 50%;
+      flex-basis: 50%;
+      @media ${props => props.theme.qBreakpoints.mobileL} {
+        max-width: 25%;
+        flex-basis: 25%;
+      }
+    }
+    > *.as--2 {
+      max-width: 50%;
+      flex-basis: 50%;
+    }
   }
   
 `;

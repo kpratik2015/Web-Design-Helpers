@@ -36,6 +36,7 @@ declare module 'styled-components' {
       shades: string[];
       blacks: string[];
       whites: string[];
+      [key: string]: string | string[];
     };
     fontPrimary: string;
     fontSecondary: string;

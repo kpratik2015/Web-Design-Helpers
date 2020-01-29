@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React, { useContext } from 'react';
+import styled, { ThemeContext } from 'styled-components/macro';
 import { Copy } from 'styled-icons/feather/Copy';
 import { copyToClipboard } from '../../utils/utils';
 import { Check } from 'styled-icons/feather/Check';
@@ -16,7 +16,7 @@ const Container = styled.div`
   margin-bottom: ${props => props.theme.space[1]};
   box-shadow: 0 0.125rem 0.125rem 0 rgba(32, 47, 71, 0.1),
     0 0 0.25rem 0 rgba(32, 47, 71, 0.05), 0 0 0 0.0625rem rgba(32, 47, 71, 0.03);
-  min-height: 13.75rem;
+  min-height: 12rem;
 `;
 
 const ColorContainer = styled.div`
@@ -51,14 +51,18 @@ const ColorNameContainer = styled.div`
 
 interface IProps {
   colorName: string;
-  color: string;
+  color?: string;
+  themeColor?: string;
 }
 
 const ColorCard: React.FC<IProps> = props => {
-  const { colorName, color } = props;
+  const themeContext = useContext(ThemeContext);
+  const { colorName, themeColor = 'primary' } = props;
+  const { color = themeContext.colors[themeColor] } = props;
   const [isCopied, setIsCopied] = React.useState(false);
+
   const colorContainerClick = () => {
-    const didItCopy = copyToClipboard(color);
+    const didItCopy = copyToClipboard(color as string);
     setIsCopied(didItCopy);
   };
   React.useEffect(() => {
@@ -70,7 +74,7 @@ const ColorCard: React.FC<IProps> = props => {
     <Wrapper>
       <Container>
         <ColorContainer
-          style={{ backgroundColor: color }}
+          style={{ backgroundColor: color as string }}
           onClick={colorContainerClick}
           onKeyPress={colorContainerClick}
         >
