@@ -6,6 +6,8 @@ route: /colors
 
 import ColorCard from '../components/ColorCard/ColorCard';
 
+import MultiColorCard from '../components/MultiColorCard/MultiColorCard';
+
 # Colors
 
 ## Brand Colors
@@ -49,3 +51,7 @@ import ColorCard from '../components/ColorCard/ColorCard';
     <ColorCard colorName="Accent Lighter" themeColor="accentLighter" />
   </div>
 </div>
+
+## App Colors
+
+<MultiColorCard palleteName="Text" colors={[{name: "Light", color: "#fff"}, {name: "Default", color: "#333" }]} />
