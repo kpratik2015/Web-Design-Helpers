@@ -1,8 +1,13 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components/macro';
 import { Copy } from 'styled-icons/feather/Copy';
-import { copyToClipboard } from '../../utils/utils';
+import {
+  copyToClipboard,
+  pickTextColorBasedOnBgColor,
+  resolveFromObject
+} from '../../utils/utils';
 import { Check } from 'styled-icons/feather/Check';
+import { lightTheme, darkTheme } from '../../theme/theme';
 
 const Wrapper = styled.div`
   flex: 1 0 auto;
@@ -40,7 +45,7 @@ const ColorBox = styled.div`
   span {
     color: inherit;
     font-weight: ${props => props.theme.fontWeights.bold};
-    font-size: ${props => props.theme.fontSizes[1]};
+    font-size: 0.65rem;
     font-family: ${props => props.theme.fontPrimary};
   }
   color: #fff;
@@ -70,34 +75,21 @@ interface IProps {
 const SingleColorCard: React.FC<any> = props => {
   const { color, name } = props;
   const [isCopied, setIsCopied] = React.useState(false);
-
+  const backgroundColorLD = pickTextColorBasedOnBgColor(color);
+  const txtColor =
+    backgroundColorLD === 'light'
+      ? darkTheme.text.secondary
+      : lightTheme.text.secondary;
   React.useEffect(() => {
     if (isCopied) {
       setTimeout(() => setIsCopied(false), 1000);
     }
   }, [isCopied]);
 
-  const pickTextColorBasedOnBgColor = (bgColor: string): string => {
-    var color = bgColor.charAt(0) === '#' ? bgColor.substring(1, 7) : bgColor;
-    var r = parseInt(color.substring(0, 2), 16); // hexToR
-    var g = parseInt(color.substring(2, 4), 16); // hexToG
-    var b = parseInt(color.substring(4, 6), 16); // hexToB
-    var uicolors = [r / 255, g / 255, b / 255];
-    var c = uicolors.map(col => {
-      if (col <= 0.03928) {
-        return col / 12.92;
-      }
-      return Math.pow((col + 0.055) / 1.055, 2.4);
-    });
-    var L = 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
-    return L > 0.179 ? 'dark' : 'light';
-  };
-
   const colorContainerClick = (): void => {
     const didItCopy = copyToClipboard(color as string);
     setIsCopied(didItCopy);
   };
-
   return (
     <ColorBox
       style={{ backgroundColor: color as string }}
@@ -105,8 +97,12 @@ const SingleColorCard: React.FC<any> = props => {
       onKeyPress={colorContainerClick}
       role="button"
     >
-      <span>{name}</span>
-      {isCopied ? <Check size={24} /> : <Copy size={24} />}
+      <span style={{ color: txtColor }}>{name}</span>
+      {isCopied ? (
+        <Check size={24} color={txtColor} />
+      ) : (
+        <Copy size={24} color={txtColor} />
+      )}
     </ColorBox>
   );
 };
@@ -118,9 +114,11 @@ const MultiColorCard: React.FC<IProps> = props => {
   return (
     <Wrapper>
       <Container>
-        {colors.map(({ name, color, themeColor = 'primary' }) => {
-          const cc = color ? color : themeContext.colors[themeColor];
-          return <SingleColorCard color={cc} name={name} />;
+        {colors.map(({ name, color, themeColor = 'colors.primary' }, idx) => {
+          const cc = color
+            ? color
+            : resolveFromObject(themeContext, themeColor);
+          return <SingleColorCard key={idx} color={cc} name={name} />;
         })}
         <FooterContainer>{palleteName}</FooterContainer>
       </Container>

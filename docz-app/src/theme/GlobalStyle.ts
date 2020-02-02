@@ -19,15 +19,19 @@ export const GlobalStyle = createGlobalStyle`
   html, body {
     width: 100%;
     height: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
   }
   body {
-    -webkit-font-smoothing: antialiased;
-    color: ${props => props.theme.text.primary};
-    background-color: ${props => props.theme.bg.primary};
-    font-size: 10px; /**makes rem calculation easier */
-    font-weight: ${props => props.theme.fontWeights.body};
-    font-family: ${props => props.theme.fontPrimary};
-    line-height: ${props => props.theme.lineHeights.body};
+    && { 
+      color: ${props => props.theme.text.primary};
+      background-color: ${props => props.theme.bg.primary};
+      font-size: 10px; /**makes rem calculation easier */
+      font-weight: ${props => props.theme.fontWeights.body};
+      font-family: ${props => props.theme.fontPrimary};
+      letter-spacing: ${props => props.theme.letterSpacings.nominal};
+      line-height: ${props => props.theme.lineHeights.body};
+    }
   }
 
   a {
@@ -47,6 +51,12 @@ export const GlobalStyle = createGlobalStyle`
   h4 { font-size: ${props => props.theme.fontSizes[3]} }
   h5 { font-size: ${props => props.theme.fontSizes[2]} }
   h6 { font-size: ${props => props.theme.fontSizes[1]} }
+
+  /**
+  -----------------------------
+  Docz Overrides
+  -----------------------------
+  */
 
   /**
   -----------------------------
@@ -157,6 +167,12 @@ export const GlobalStyle = createGlobalStyle`
         padding-bottom: ${props => props.theme.space[2]};
         padding-right: 0;
       }
+      &--lg {
+        margin-left: ${props => `-${props.theme.space[5]}`};
+        > * {
+          padding-left: ${props => props.theme.space[5]};
+        }
+      }
     }
     
     > *.as--4 {
@@ -167,9 +183,41 @@ export const GlobalStyle = createGlobalStyle`
         flex-basis: 25%;
       }
     }
+    > *.as--3 {
+      max-width: 50%;
+      flex-basis: 50%;
+      @media ${props => props.theme.qBreakpoints.mobileL} {
+        max-width: 33.33%;
+        flex-basis: 33.33%;
+      }
+    }
     > *.as--2 {
       max-width: 50%;
       flex-basis: 50%;
+    }
+  }
+
+  .badge {
+    display: inline-block;
+    vertical-align: middle;
+    padding: .4em .8em;
+    margin-top: -.3em;
+    font-size: ${props => props.theme.fontSizes[0]};
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+    border-radius: 62.5rem;
+    color: ${props => props.theme.text.secondary};
+    background: ${props => props.theme.bg.primary};
+    box-shadow: inset 0 0 0 0.0625rem ${props => props.theme.colors.blacks[2]};
+    &.as--xs {
+      padding: 0.125rem 0.25rem;
+      font-size: ${props => `calc(${props.theme.fontSizes[0]} - 0.125rem)`};  
+    }
+    &.as--end {
+      margin-left: ${props => props.theme.space[1]};
     }
   }
   

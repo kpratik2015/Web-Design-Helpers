@@ -1,0 +1,61 @@
+---
+name: Typography
+menu: Branding
+route: /typography
+---
+
+import FontPreview from '../components/FontPreview/FontPreview';
+
+# Fonts
+
+## Primary Font
+
+<div className="pr-grid as--gutter">
+  <div className="as--2">
+    <FontPreview fontFamilyName={'Lato'} fontWeight={400} />
+  </div>
+  <div className="as--2">
+    <FontPreview fontFamilyName={'Lato'} fontWeight={700} />
+  </div>
+  <div className="as--2">
+    <FontPreview fontFamilyName={'Lato'} fontWeight={900} />
+  </div>
+</div>
+
+```
+/** theme variable */
+fontPrimary
+
+/** import */
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap');
+```
+
+## Secondary Font
+
+<div className="pr-grid as--gutter">
+  <div className="as--2">
+    <FontPreview fontFamilyName={'Frank Ruhl Libre'} fontWeight={500} />
+  </div>
+  <div className="as--2">
+    <FontPreview fontFamilyName={'Frank Ruhl Libre'} fontWeight={700} />
+  </div>
+</div>
+
+```
+/** theme variable */
+fontSecondary
+
+/** import */
+@import url('https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre:500,700&display=swap');
+```
+
+## Code Font
+
+<div className="pr-grid as--gutter">
+  <div className="as--2">
+    <FontPreview fontFamilyName={'Inconsolate'} fontWeight={'normal'} />
+  </div>
+  <div className="as--2">
+    <FontPreview fontFamilyName={'Inconsolate'} fontWeight={'bold'} />
+  </div>
+</div>

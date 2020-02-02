@@ -1,28 +1,33 @@
 {
-  "name": "pratik-design-system",
-  "description": "A docz for just another design system",
+  "name": "pratik-web-nuggets",
+  "description": "Bits of web design that would help in development",
   "author": {
     "name": "Pratik Kataria",
     "url": "https://pratikkataria.com",
     "email": "hello@pratikkataria.com"
   },
+  "keywords": [
+    "Web Design",
+    "Reference",
+    "Pratik Kataria"
+  ],
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.0.2",
+    "@testing-library/jest-dom": "^5.1.0",
     "@testing-library/react": "^9.4.0",
-    "@testing-library/user-event": "^8.0.5",
-    "@types/jest": "^25.1.0",
-    "@types/node": "^13.5.0",
+    "@testing-library/user-event": "^8.1.0",
+    "@types/jest": "^25.1.1",
+    "@types/node": "^13.7.0",
     "@types/react": "^16.9.19",
     "@types/react-dom": "^16.9.5",
     "@types/styled-components": "^4.4.2",
     "docz": "^2.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0",
+    "react-scripts": "3.3.1",
     "styled-components": "^5.0.0",
-    "styled-icons": "^9.2.0",
+    "styled-icons": "^9.3.0",
     "typescript": "~3.7.5",
     "use-dark-mode": "^2.3.1"
   },
@@ -33,6 +38,7 @@
     "eject": "react-scripts eject",
     "docz:dev": "docz dev",
     "docz:build": "docz build",
+    "postdocz:build": "cd dist-remote/web-nuggets && git add . && git commit -m \"Update\" && git push -u origin master",
     "docz:serve": "docz build && docz serve"
   },
   "eslintConfig": {
@@ -52,5 +58,6 @@
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.10.7"
-  }
+  },
+  "homepage": "https://pratikkataria.com/web-nuggets/"
 }

@@ -2,3 +2,5 @@
 * Bring in normalize.css styles. https://create-react-app.dev/docs/adding-css-reset
 */
 @import-normalize;
+
+@import url('https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre:500,700|Lato:400,700,900&display=swap');

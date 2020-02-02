@@ -7,7 +7,8 @@ import prism from './prism';
 import styles from './styles';
 
 moraga.headerWeight = 700;
-moraga.headerFontFamily = ['Frank Ruhl Libre', 'sans-serif'];
+moraga.headerFontFamily = ['Frank Ruhl Libre'];
+moraga.bodyFontFamily = ['Lato'];
 const typography = toTheme(moraga);
 
 export default merge(typography, {

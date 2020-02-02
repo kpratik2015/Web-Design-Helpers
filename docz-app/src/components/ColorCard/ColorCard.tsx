@@ -1,7 +1,11 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components/macro';
 import { Copy } from 'styled-icons/feather/Copy';
-import { copyToClipboard } from '../../utils/utils';
+import {
+  copyToClipboard,
+  resolveFromObject,
+  pickTextColorBasedOnBgColor
+} from '../../utils/utils';
 import { Check } from 'styled-icons/feather/Check';
 
 const Wrapper = styled.div`
@@ -58,8 +62,10 @@ interface IProps {
 const ColorCard: React.FC<IProps> = props => {
   const themeContext = useContext(ThemeContext);
   const { colorName, themeColor = 'primary' } = props;
-  const { color = themeContext.colors[themeColor] } = props;
+  const { color = resolveFromObject(themeContext, themeColor) } = props;
   const [isCopied, setIsCopied] = React.useState(false);
+  const backgroundColorLD = pickTextColorBasedOnBgColor(color);
+  const contrastingColor = backgroundColorLD === 'light' ? '#000' : '#fff';
 
   const colorContainerClick = () => {
     const didItCopy = copyToClipboard(color as string);
@@ -78,7 +84,11 @@ const ColorCard: React.FC<IProps> = props => {
           onClick={colorContainerClick}
           onKeyPress={colorContainerClick}
         >
-          {isCopied ? <Check size={24} /> : <Copy size={24} />}
+          {isCopied ? (
+            <Check size={24} color={contrastingColor} />
+          ) : (
+            <Copy size={24} color={contrastingColor} />
+          )}
         </ColorContainer>
         <ColorNameContainer>{colorName}</ColorNameContainer>
       </Container>

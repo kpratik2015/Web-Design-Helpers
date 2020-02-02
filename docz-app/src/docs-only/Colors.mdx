@@ -14,10 +14,10 @@ import MultiColorCard from '../components/MultiColorCard/MultiColorCard';
 
 <div className="pr-grid as--gutter">
   <div className="as--2">
-    <ColorCard colorName="Primary" themeColor="primary" />
+    <ColorCard colorName="Primary" themeColor="colors.primary" />
   </div>
   <div className="as--2">
-    <ColorCard colorName="Accent" themeColor="accent" />
+    <ColorCard colorName="Accent" themeColor="colors.accent" />
   </div>
 </div>
 
@@ -25,33 +25,185 @@ import MultiColorCard from '../components/MultiColorCard/MultiColorCard';
 
 <div className="pr-grid as--gutter">
   <div className="as--4">
-    <ColorCard colorName="Primary Darker" themeColor="primaryDarker" />
+    <ColorCard colorName="Primary Darker" themeColor="colors.primaryDarker" />
   </div>
   <div className="as--4">
-    <ColorCard colorName="Primary Dark" themeColor="primaryDark" />
+    <ColorCard colorName="Primary Dark" themeColor="colors.primaryDark" />
   </div>
   <div className="as--4">
-    <ColorCard colorName="Primary Light" themeColor="primaryLight" />
+    <ColorCard colorName="Primary Light" themeColor="colors.primaryLight" />
   </div>
   <div className="as--4">
-    <ColorCard colorName="Primary Lighter" themeColor="primaryLighter" />
+    <ColorCard colorName="Primary Lighter" themeColor="colors.primaryLighter" />
   </div>
 </div>
 <div className="pr-grid as--gutter">
   <div className="as--4">
-    <ColorCard colorName="Accent Darker" themeColor="accentDarker" />
+    <ColorCard colorName="Accent Darker" themeColor="colors.accentDarker" />
   </div>
   <div className="as--4">
-    <ColorCard colorName="Accent Dark" themeColor="accentDark" />
+    <ColorCard colorName="Accent Dark" themeColor="colors.accentDark" />
   </div>
   <div className="as--4">
-    <ColorCard colorName="Accent Light" themeColor="accentLight" />
+    <ColorCard colorName="Accent Light" themeColor="colors.accentLight" />
   </div>
   <div className="as--4">
-    <ColorCard colorName="Accent Lighter" themeColor="accentLighter" />
+    <ColorCard colorName="Accent Lighter" themeColor="colors.accentLighter" />
   </div>
 </div>
 
 ## App Colors
 
-<MultiColorCard palleteName="Text" colors={[{name: "Light", color: "#fff"}, {name: "Default", color: "#333" }]} />
+<div className="pr-grid as--gutter">
+  <div className="as--3">
+    <MultiColorCard
+      palleteName="Text"
+      colors={[
+        { name: 'Light', themeColor: 'colors.shades.0' },
+        { name: 'Default', themeColor: 'colors.shades.4' }
+      ]}
+    />
+  </div>
+  <div className="as--3">
+    <MultiColorCard
+      palleteName="Border"
+      colors={[
+        { name: 'Light', themeColor: 'colors.border.light' },
+        { name: 'Default', themeColor: 'colors.border.default' }
+      ]}
+    />
+  </div>
+  <div className="as--3">
+    <MultiColorCard
+      palleteName="Primary"
+      colors={[
+        { name: 'Light', themeColor: 'colors.indicators.primary.light' },
+        { name: 'Default', themeColor: 'colors.indicators.primary.default' },
+        { name: 'Dark', themeColor: 'colors.indicators.primary.dark' }
+      ]}
+    />
+  </div>
+  <div className="as--3">
+    <MultiColorCard
+      palleteName="Success"
+      colors={[
+        { name: 'Light', themeColor: 'colors.indicators.success.light' },
+        { name: 'Default', themeColor: 'colors.indicators.success.default' },
+        { name: 'Text', themeColor: 'colors.indicators.success.text' },
+        { name: 'Dark', themeColor: 'colors.indicators.success.dark' }
+      ]}
+    />
+  </div>
+  <div className="as--3">
+    <MultiColorCard
+      palleteName="Warning"
+      colors={[
+        { name: 'Light', themeColor: 'colors.indicators.warning.light' },
+        { name: 'Default', themeColor: 'colors.indicators.warning.default' },
+        { name: 'Text', themeColor: 'colors.indicators.warning.text' },
+        { name: 'Dark', themeColor: 'colors.indicators.warning.dark' }
+      ]}
+    />
+  </div>
+  <div className="as--3">
+    <MultiColorCard
+      palleteName="Danger"
+      colors={[
+        { name: 'Light', themeColor: 'colors.indicators.danger.light' },
+        { name: 'Default', themeColor: 'colors.indicators.danger.default' },
+        { name: 'Text', themeColor: 'colors.indicators.danger.text' },
+        { name: 'Dark', themeColor: 'colors.indicators.danger.dark' }
+      ]}
+    />
+  </div>
+</div>
+
+## Shades of Black
+
+<div className="pr-grid as--gutter">
+  <div className="as--4">
+    <ColorCard colorName="Black 1.25%" themeColor="colors.blacks.0" />
+  </div>
+  <div className="as--4">
+    <ColorCard colorName="Black 2.5%" themeColor="colors.blacks.1" />
+  </div>
+  <div className="as--4">
+    <ColorCard colorName="Black 5%" themeColor="colors.blacks.2" />
+  </div>
+  <div className="as--4">
+    <ColorCard colorName="Black 10%" themeColor="colors.blacks.3" />
+  </div>
+</div>
+<div className="pr-grid as--gutter">
+  <div className="as--4">
+    <ColorCard colorName="Black 20%" themeColor="colors.blacks.4" />
+  </div>
+  <div className="as--4">
+    <ColorCard colorName="Black 30%" themeColor="colors.blacks.5" />
+  </div>
+  <div className="as--4">
+    <ColorCard colorName="Black 40%" themeColor="colors.blacks.6" />
+  </div>
+  <div className="as--4">
+    <ColorCard colorName="Black 50%" themeColor="colors.blacks.7" />
+  </div>
+</div>
+<div className="pr-grid as--gutter">
+  <div className="as--4">
+    <ColorCard colorName="Black 60%" themeColor="colors.blacks.8" />
+  </div>
+  <div className="as--4">
+    <ColorCard colorName="Black 70%" themeColor="colors.blacks.9" />
+  </div>
+  <div className="as--4">
+    <ColorCard colorName="Black 80%" themeColor="colors.blacks.10" />
+  </div>
+  <div className="as--4">
+    <ColorCard colorName="Black 90%" themeColor="colors.blacks.11" />
+  </div>
+</div>
+
+## Shades of White
+
+<div className="pr-grid as--gutter">
+  <div className="as--4">
+    <ColorCard colorName="White 1.25%" themeColor="colors.whites.0" />
+  </div>
+  <div className="as--4">
+    <ColorCard colorName="White 2.5%" themeColor="colors.whites.1" />
+  </div>
+  <div className="as--4">
+    <ColorCard colorName="White 5%" themeColor="colors.whites.2" />
+  </div>
+  <div className="as--4">
+    <ColorCard colorName="White 10%" themeColor="colors.whites.3" />
+  </div>
+</div>
+<div className="pr-grid as--gutter">
+  <div className="as--4">
+    <ColorCard colorName="White 20%" themeColor="colors.whites.4" />
+  </div>
+  <div className="as--4">
+    <ColorCard colorName="White 30%" themeColor="colors.whites.5" />
+  </div>
+  <div className="as--4">
+    <ColorCard colorName="White 40%" themeColor="colors.whites.6" />
+  </div>
+  <div className="as--4">
+    <ColorCard colorName="White 50%" themeColor="colors.whites.7" />
+  </div>
+</div>
+<div className="pr-grid as--gutter">
+  <div className="as--4">
+    <ColorCard colorName="White 60%" themeColor="colors.whites.8" />
+  </div>
+  <div className="as--4">
+    <ColorCard colorName="White 70%" themeColor="colors.whites.9" />
+  </div>
+  <div className="as--4">
+    <ColorCard colorName="White 80%" themeColor="colors.whites.10" />
+  </div>
+  <div className="as--4">
+    <ColorCard colorName="White 90%" themeColor="colors.whites.11" />
+  </div>
+</div>

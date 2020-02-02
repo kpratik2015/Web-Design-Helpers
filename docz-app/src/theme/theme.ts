@@ -1,5 +1,3 @@
-import { DefaultTheme } from 'styled-components';
-
 const size: any = {
   mobileS: 320,
   mobileM: 375,
@@ -29,16 +27,16 @@ const colors = {
   accentDarker: 'hsl(30, 88%, 30%)',
   black: 'hsl(240, 8%, 12%)',
   white: 'hsl(0, 0%, 100%)',
-  success: 'hsl(94, 48%, 56%)',
-  error: 'hsl(349, 75%, 51%)',
-  warning: 'hsl(46, 100%, 61%)',
+  success: '#23A57A',
+  danger: '#DE3345',
+  warning: '#FFAA55',
   shades: [
-    'hsl(0, 0%, 95%)',
-    'hsl(240, 1%, 83%)',
-    'hsl(240, 1%, 48%)',
-    'hsl(240, 4%, 20%)',
-    'hsl(240, 8%, 12%)',
-    'hsl(240, 18%, 6%)'
+    'hsl(0, 0%, 95%)', // 0
+    'hsl(240, 1%, 83%)', // 1
+    'hsl(240, 1%, 48%)', // 2
+    'hsl(240, 4%, 20%)', // 3
+    'hsl(240, 8%, 12%)', // 4
+    'hsl(240, 18%, 6%)' // 5
   ],
   blacks: [
     'rgba(0,0,0,.0125)',
@@ -67,7 +65,36 @@ const colors = {
     'rgba(255,255,255,.7)',
     'rgba(255,255,255,.8)',
     'rgba(255,255,255,.9)'
-  ]
+  ],
+  border: {
+    default: '#d9dbe3',
+    light: '#eff0f1'
+  },
+  indicators: {
+    primary: {
+      light: '#C4DFFD',
+      default: '#0172F5',
+      dark: '#134681'
+    },
+    success: {
+      light: '#C4FDEA',
+      default: '#23A57A',
+      text: '#1c8562',
+      dark: '#0F6246'
+    },
+    warning: {
+      light: '#FDE0C4',
+      default: '#FFAA55',
+      text: '#d16900',
+      dark: '#814A13'
+    },
+    danger: {
+      light: '#FDCED3',
+      default: '#DE3345',
+      text: '#c21e2f',
+      dark: '#81131D'
+    }
+  }
 };
 
 const fontScaleRatio = 1.1;
@@ -87,9 +114,9 @@ const typography = {
   fontWeights: {
     body: 400,
     subheading: 500,
-    link: 600,
-    bold: 700,
-    heading: 800
+    link: 700,
+    bold: 900,
+    heading: 700
   },
   lineHeights: {
     body: 1.5,
@@ -98,6 +125,7 @@ const typography = {
   },
   letterSpacings: {
     normal: 'normal',
+    nominal: '1px',
     tracked: '0.1rem',
     tight: '-0.05rem',
     mega: '0.25rem'
@@ -135,7 +163,21 @@ const layout = {
     `${2 * spacingMultiplier}rem`, // 5
     `${3.25 * spacingMultiplier}rem`, // 6
     `${5.25 * spacingMultiplier}rem` // 7
-  ]
+  ],
+  boxShadows: {
+    shadow100:
+      'rgba(32,47,71,0.1) 0px 0.125rem 0.125rem 0px, rgba(32,47,71,0.05) 0px 0px 0.25rem 0px, rgba(32,47,71,0.03) 0px 0px 0px 0.0625rem',
+    shadow200:
+      'rgba(32, 47, 71, 0.08) 0px 0.1875rem 0.25rem -0.0625rem, rgba(32, 47, 71, 0.06) 0px 0.125rem 0.4375rem 0px, rgba(32, 47, 71, 0.04) 0px -0.1875rem 0.1875rem -0.125rem, rgba(32, 47, 71, 0.03) 0px 0px 0px 0.0625rem',
+    shadow300:
+      'rgba(32, 47, 71, 0.06) 0px 0.8125rem 0.4375rem -0.4375rem, rgba(32, 47, 71, 0.08) 0.625rem 0.25rem 0.4375rem -0.5rem, rgba(32, 47, 71, 0.08) -0.625rem 0.25rem 0.4375rem -0.5rem, rgba(32, 47, 71, 0.06) 0px 0.1875rem 0.375rem 0px, rgba(32, 47, 71, 0.04) 0px -0.25rem 0.5rem -0.125rem, rgba(32, 47, 71, 0.03) 0px 0px 0px 0.0625rem',
+    shadow400:
+      'rgba(32, 47, 71, 0.08) 0.75rem 0.25rem 0.75rem -0.5rem, rgba(32, 47, 71, 0.08) -0.75rem 0.25rem 0.75rem -0.5rem, rgba(32, 47, 71, 0.08) 0px 0.75rem 0.75rem -0.375rem, rgba(32, 47, 71, 0.06) 0px 0.375rem 0.5rem 0px, rgba(32, 47, 71, 0.02) 0px -0.5rem 0.5rem -0.125rem, rgba(32, 47, 71, 0.03) 0px 0px 0px 0.0625rem',
+    shadow500:
+      'rgba(32, 47, 71, 0.08) 0.9375rem 0.25rem 0.9375rem -0.5rem, rgba(32, 47, 71, 0.08) -0.9375rem 0.25rem 0.9375rem -0.5rem, rgba(32, 47, 71, 0.08) 0px 1.25rem 1.25rem -0.375rem, rgba(32, 47, 71, 0.06) 0px 0.875rem 0.625rem -0.25rem, rgba(32, 47, 71, 0.02) 0px -0.25rem 0.5rem -0.125rem, rgba(32, 47, 71, 0.03) 0px 0px 0px 0.0625rem',
+    shadow600:
+      'rgba(32, 47, 71, 0.08) 1.25rem 0.25rem 1.25rem -0.5rem, rgba(32, 47, 71, 0.08) -1.25rem 0.25rem 1.25rem -0.5rem, rgba(32, 47, 71, 0.08) 0px 1.25rem 1.625rem -0.125rem, rgba(32, 47, 71, 0.06) 0px 1.875rem 1.625rem -0.5rem, rgba(32, 47, 71, 0.03) 0px 0px 0px 0.0625rem'
+  }
 };
 
 const dark = {
@@ -162,5 +204,5 @@ const defaultTheme = {
   qBreakpoints
 };
 
-export const lightTheme: DefaultTheme = { ...defaultTheme, ...light };
-export const darkTheme: DefaultTheme = { ...defaultTheme, ...dark };
+export const lightTheme = { ...defaultTheme, ...light };
+export const darkTheme = { ...defaultTheme, ...dark };

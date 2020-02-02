@@ -10,6 +10,7 @@
 
 # production
 /build
+/dist-remote/web-nuggets/*
 
 # misc
 .DS_Store
