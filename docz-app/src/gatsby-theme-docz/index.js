@@ -2,7 +2,6 @@
 import { jsx } from 'theme-ui';
 import { theme, useConfig, ComponentsProvider } from 'docz';
 import { Styled, ThemeProvider } from 'theme-ui';
-import MyThemeProvider from 'mytheme/MyThemeProvider';
 
 import defaultTheme from '~theme';
 import components from '~components';
@@ -20,9 +19,7 @@ const Theme = ({ children }) => {
       components={components}
     >
       <ComponentsProvider components={components}>
-        <MyThemeProvider>
-          <Styled.root>{children}</Styled.root>
-        </MyThemeProvider>
+        <Styled.root>{children}</Styled.root>
       </ComponentsProvider>
     </ThemeProvider>
   );

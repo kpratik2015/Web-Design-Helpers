@@ -113,7 +113,7 @@ export const GlobalStyle = createGlobalStyle`
     white-space: nowrap;
   }
 
-  .page-container {
+  .page-container, div[data-testid="main-container"] {
     padding-bottom: 30vh;
     width: 100%;
     margin: 0px auto;

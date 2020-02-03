@@ -25,11 +25,7 @@ export const Layout = ({ children }) => {
             onBlur={() => setOpen(false)}
             onClick={() => setOpen(false)}
           />
-          <Container
-            sx={styles.content}
-            data-testid="main-container"
-            className="page-container"
-          >
+          <Container sx={styles.content} data-testid="main-container">
             {children}
           </Container>
         </div>
