@@ -5,19 +5,11 @@ import { Styled, ThemeProvider } from 'theme-ui';
 
 import defaultTheme from '~theme';
 import components from '~components';
-import useDarkMode from 'use-dark-mode';
 
 const Theme = ({ children }) => {
   const config = useConfig();
-  const { value: isDarkModeEnabled } = useDarkMode();
   return (
-    <ThemeProvider
-      theme={{
-        ...config.themeConfig,
-        initialColorMode: isDarkModeEnabled ? 'dark' : 'light'
-      }}
-      components={components}
-    >
+    <ThemeProvider theme={config.themeConfig} components={components}>
       <ComponentsProvider components={components}>
         <Styled.root>{children}</Styled.root>
       </ComponentsProvider>
