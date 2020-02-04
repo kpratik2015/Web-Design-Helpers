@@ -38,6 +38,7 @@ export const Header = props => {
     } else {
       setColorMode('light');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
