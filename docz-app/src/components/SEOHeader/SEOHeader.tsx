@@ -41,17 +41,22 @@ headings: Array(1)
 const SEOHeader: React.FC<{ doc: IDoc }> = props => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { doc } = props;
+  const pathPrepend = process.env.NODE_ENV === 'development' ? '/public' : '';
   return (
     <Helmet htmlAttributes={{ lang: 'en' }}>
       <meta charSet="utf-8" />
       <meta name="robots" content="index, follow" />
       <meta property="og:type" content="website" />
-      <link rel="apple-touch-icon" href="/public/icon-192x192.png" />
-      <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
+      <link rel="apple-touch-icon" href={pathPrepend + '/icon-192x192.png'} />
+      <link
+        rel="icon"
+        type="image/x-icon"
+        href={pathPrepend + '/favicon.ico'}
+      />
       <link
         rel="apple-touch-icon"
         sizes="512x512"
-        href="/public/icon-512x512.png"
+        href={pathPrepend + '/icon-512x512.png'}
       />
     </Helmet>
   );
