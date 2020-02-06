@@ -12,7 +12,7 @@ moraga.bodyFontFamily = ['Lato'];
 const typography = toTheme(moraga);
 
 export default merge(typography, {
-  initialColorMode: 'light',
+  initialColorMode: 'default',
   // Show errors above playground editor
   showLiveError: true,
   // Show preview of the code inside playground
@@ -26,9 +26,9 @@ export default merge(typography, {
   // Wrap the playground editor and preview in iframes to avoid style/script collisions
   useScopingInPlayground: false,
   colors: {
-    ...modes.light,
     modes: {
-      dark: modes.dark
+      dark: modes.dark,
+      light: modes.light
     }
   },
   fonts: {

@@ -26,3 +26,6 @@ yarn-error.log*
 # docz
 .docz
 *.log
+
+# switching to yarn
+package-lock.json

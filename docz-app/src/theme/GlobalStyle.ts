@@ -52,6 +52,10 @@ export const GlobalStyle = createGlobalStyle`
   h5 { font-size: ${props => props.theme.fontSizes[2]} }
   h6 { font-size: ${props => props.theme.fontSizes[1]} }
 
+  :focus {
+    outline: ${props => props.theme.colors.accentLight} dashed 2px;
+  }
+
   /**
   -----------------------------
   Docz Overrides
