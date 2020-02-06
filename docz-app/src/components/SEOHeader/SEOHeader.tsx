@@ -41,7 +41,8 @@ headings: Array(1)
 const SEOHeader: React.FC<{ doc: IDoc }> = props => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { doc } = props;
-  const pathPrepend = process.env.NODE_ENV === 'development' ? '/public' : '';
+  const pathPrepend =
+    process.env.NODE_ENV === 'development' ? '/public' : '/web-nuggets/public/';
   return (
     <Helmet htmlAttributes={{ lang: 'en' }}>
       <meta charSet="utf-8" />
