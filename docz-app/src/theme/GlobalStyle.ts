@@ -61,7 +61,9 @@ export const GlobalStyle = createGlobalStyle`
   Docz Overrides
   -----------------------------
   */
-
+  [data-testid="playground"] {
+    margin-bottom: 2rem !important;
+  }
   /**
   -----------------------------
   Utility classes

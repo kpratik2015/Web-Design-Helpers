@@ -177,6 +177,15 @@ const layout = {
       'rgba(32, 47, 71, 0.08) 0.9375rem 0.25rem 0.9375rem -0.5rem, rgba(32, 47, 71, 0.08) -0.9375rem 0.25rem 0.9375rem -0.5rem, rgba(32, 47, 71, 0.08) 0px 1.25rem 1.25rem -0.375rem, rgba(32, 47, 71, 0.06) 0px 0.875rem 0.625rem -0.25rem, rgba(32, 47, 71, 0.02) 0px -0.25rem 0.5rem -0.125rem, rgba(32, 47, 71, 0.03) 0px 0px 0px 0.0625rem',
     shadow600:
       'rgba(32, 47, 71, 0.08) 1.25rem 0.25rem 1.25rem -0.5rem, rgba(32, 47, 71, 0.08) -1.25rem 0.25rem 1.25rem -0.5rem, rgba(32, 47, 71, 0.08) 0px 1.25rem 1.625rem -0.125rem, rgba(32, 47, 71, 0.06) 0px 1.875rem 1.625rem -0.5rem, rgba(32, 47, 71, 0.03) 0px 0px 0px 0.0625rem'
+  },
+  gutter: {
+    xxs: 0.2,
+    xs: 0.39,
+    sm: 0.67,
+    md: 1,
+    lg: 1.33,
+    xl: 1.89,
+    xxl: 2.2
   }
 };
 

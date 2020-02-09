@@ -1,17 +1,17 @@
-import * as mixins from '~utils/mixins'
+import * as mixins from '~utils/mixins';
 
 export const editor = theme => ({
   p: 2,
   border: t => `1px solid ${t.colors.border}`,
   borderRadius: '0 0 4px 4px',
-  background: theme.plain.backgroundColor,
+  background: theme?.plain.backgroundColor,
   borderTop: 0,
   fontFamily: 'monospace',
   fontSize: 18,
   '* > textarea:focus': {
-    outline: 'none',
-  },
-})
+    outline: 'none'
+  }
+});
 
 export const error = {
   m: 0,
@@ -19,12 +19,12 @@ export const error = {
   px: 3,
   bg: '#FF4757',
   fontSize: 1,
-  color: 'white',
-}
+  color: 'white'
+};
 
 export const previewWrapper = {
-  position: 'relative',
-}
+  position: 'relative'
+};
 
 export const previewInner = (showingCode, height = 'auto') => ({
   height,
@@ -32,22 +32,22 @@ export const previewInner = (showingCode, height = 'auto') => ({
   minHeight: '100%',
   width: 'calc(100% - 2px)',
   bg: 'playground.bg',
-  border: t => `1px solid ${t.colors.playground.border}`,
-  borderRadius: showingCode ? '4px 4px 0 0' : '4px',
-})
+  border: t => `1px solid ${t.colors.playground?.border}`,
+  borderRadius: showingCode ? '4px 4px 0 0' : '4px'
+});
 
 export const preview = {
   margin: 0,
-  padding: '20px',
-}
+  padding: '20px'
+};
 
 export const buttons = {
   zIndex: 9,
   display: 'flex',
   position: 'absolute',
   bottom: -20,
-  right: 4,
-}
+  right: 4
+};
 
 export const button = {
   ...mixins.ghostButton,
@@ -59,12 +59,12 @@ export const button = {
   color: 'muted',
   borderRadius: '0 0 3px 3px',
   '& ~ &': {
-    ml: 1,
-  },
-}
+    ml: 1
+  }
+};
 
 export const link = {
   py: 0,
   ml: 1,
-  height: 22,
-}
+  height: 22
+};

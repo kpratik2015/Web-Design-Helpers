@@ -1,0 +1,299 @@
+---
+name: Grid Concepts
+menu: Grid
+route: /grid
+---
+
+import { Playground } from 'docz';
+import StyledGrid, { GridItem } from '../components/StyledGrid/StyledGrid';
+
+# Grid Concepts
+
+Building a fluid grid solution with mobile first approach using CSS in JS.
+
+## Size
+
+<Playground>
+  <StyledGrid fractionWithBp={['1/2@tablet', '1/4@laptop']}>
+    <GridItem><div className="demo">Item with some content</div></GridItem>
+    <GridItem>
+      <div className="demo">
+        Item
+        <br />
+        two lines
+      </div>
+    </GridItem>
+    <GridItem><div className="demo">Item</div></GridItem>
+    <GridItem><div className="demo">Item</div></GridItem>
+  </StyledGrid>
+</Playground>
+
+### Stretch
+
+<Playground>
+  <StyledGrid verticalStretch fractionWithBp={['1/2@tablet', '1/4@laptop']}>
+    <GridItem><div className="demo">Item with some content</div></GridItem>
+    <GridItem>
+      <div className="demo">
+        Item
+        <br />
+        two lines
+      </div>
+    </GridItem>
+    <GridItem><div className="demo">Item</div></GridItem>
+    <GridItem><div className="demo">Item</div></GridItem>
+  </StyledGrid>
+</Playground>
+
+### Fraction Power
+
+<Playground>
+  <StyledGrid gutter="xs">
+    <GridItem><div className="demo">full</div></GridItem>
+    <GridItem fraction={1/2}><div className="demo">1/2</div></GridItem>
+    <GridItem fraction={1/2}><div className="demo">1/2</div></GridItem>
+    <GridItem fraction={1/4}><div className="demo">1/4</div></GridItem>
+    <GridItem fraction={1/4}><div className="demo">1/4</div></GridItem>
+    <GridItem fraction={1/4}><div className="demo">1/4</div></GridItem>
+    <GridItem fraction={1/4}><div className="demo">1/4</div></GridItem>
+    <GridItem fraction={1/5}><div className="demo">1/5</div></GridItem>
+    <GridItem fraction={1/5}><div className="demo">1/5</div></GridItem>
+    <GridItem fraction={1/5}><div className="demo">1/5</div></GridItem>
+    <GridItem fraction={1/5}><div className="demo">1/5</div></GridItem>
+    <GridItem fraction={1/5}><div className="demo">1/5</div></GridItem>
+    <GridItem fraction={1/6}><div className="demo">1/6</div></GridItem>
+    <GridItem fraction={1/6}><div className="demo">1/6</div></GridItem>
+    <GridItem fraction={1/6}><div className="demo">1/6</div></GridItem>
+    <GridItem fraction={1/6}><div className="demo">1/6</div></GridItem>
+    <GridItem fraction={1/6}><div className="demo">1/6</div></GridItem>
+    <GridItem fraction={1/6}><div className="demo">1/6</div></GridItem>
+    <GridItem fraction={1/7}><div className="demo">1/7</div></GridItem>
+    <GridItem fraction={1/7}><div className="demo">1/7</div></GridItem>
+    <GridItem fraction={1/7}><div className="demo">1/7</div></GridItem>
+    <GridItem fraction={1/7}><div className="demo">1/7</div></GridItem>
+    <GridItem fraction={1/7}><div className="demo">1/7</div></GridItem>
+    <GridItem fraction={1/7}><div className="demo">1/7</div></GridItem>
+    <GridItem fraction={1/7}><div className="demo">1/7</div></GridItem>
+    <GridItem fraction={1/8}><div className="demo">1/8</div></GridItem>
+    <GridItem fraction={1/8}><div className="demo">1/8</div></GridItem>
+    <GridItem fraction={1/8}><div className="demo">1/8</div></GridItem>
+    <GridItem fraction={1/8}><div className="demo">1/8</div></GridItem>
+    <GridItem fraction={1/8}><div className="demo">1/8</div></GridItem>
+    <GridItem fraction={1/8}><div className="demo">1/8</div></GridItem>
+    <GridItem fraction={1/8}><div className="demo">1/8</div></GridItem>
+    <GridItem fraction={1/8}><div className="demo">1/8</div></GridItem>
+  </StyledGrid>
+</Playground>
+
+### Grid Auto
+
+<Playground>
+  <StyledGrid auto>
+    <GridItem><div className="demo">Item with some content</div></GridItem>
+    <GridItem>
+      <div className="demo">
+        Item
+        <br />
+        two lines
+      </div>
+    </GridItem>
+    <GridItem><div className="demo">Item</div></GridItem>
+    <GridItem><div className="demo">Item</div></GridItem>
+  </StyledGrid>
+</Playground>
+
+### Grid Stretch & Auto
+
+<Playground>
+  <StyledGrid auto verticalStretch>
+    <GridItem><div className="demo">Item with some content</div></GridItem>
+    <GridItem>
+      <div className="demo">
+        Item
+        <br />
+        two lines
+      </div>
+    </GridItem>
+    <GridItem><div className="demo">Item</div></GridItem>
+    <GridItem><div className="demo">Item</div></GridItem>
+  </StyledGrid>
+</Playground>
+
+### Grid Fill
+
+Add any number of items to a container
+
+<Playground>
+  <StyledGrid autoFill className="demo">
+    <GridItem><div className="demo">Item with some content</div></GridItem>
+    <GridItem>
+      <div className="demo">
+        Item
+        <br />
+        two lines
+      </div>
+    </GridItem>
+    <GridItem><div className="demo">Item</div></GridItem>
+    <GridItem><div className="demo">Item</div></GridItem>
+  </StyledGrid>
+</Playground>
+
+### Grid Stretch & Fill
+
+<Playground>
+  <StyledGrid autoFill stretch>
+    <GridItem><div className="demo">Item with some content</div></GridItem>
+    <GridItem>
+      <div className="demo">
+        Item
+        <br />
+        two lines
+      </div>
+    </GridItem>
+    <GridItem><div className="demo">Item</div></GridItem>
+    <GridItem><div className="demo">Item</div></GridItem>
+  </StyledGrid>
+</Playground>
+
+## Alignment
+
+### Grid Horizontal Alignment
+
+<Playground>
+  <StyledGrid jStart>
+    <GridItem fraction={1/6}><div className="demo">Item</div></GridItem>
+    <GridItem fraction={1/6}><div className="demo">Item</div></GridItem>
+  </StyledGrid>
+</Playground>
+
+<Playground>
+  <StyledGrid jCenter>
+    <GridItem fraction={1/6}><div className="demo">Item</div></GridItem>
+    <GridItem fraction={1/6}><div className="demo">Item</div></GridItem>
+  </StyledGrid>
+</Playground>
+
+<Playground>
+  <StyledGrid jEnd>
+    <GridItem fraction={1/6}><div className="demo">Item</div></GridItem>
+    <GridItem fraction={1/6}><div className="demo">Item</div></GridItem>
+  </StyledGrid>
+</Playground>
+
+### Grid Vertical Alignment
+
+<Playground>
+  <StyledGrid fraction={1/3} aTop>
+    <GridItem><div className="demo">Item</div></GridItem>
+    <GridItem><div className="demo">Item<br/>three<br/>lines</div></GridItem>
+    <GridItem><div className="demo">Item</div></GridItem>
+  </StyledGrid>
+</Playground>
+
+<Playground>
+  <StyledGrid fraction={1/3} aCenter>
+    <GridItem><div className="demo">Item</div></GridItem>
+    <GridItem><div className="demo">Item<br/>three<br/>lines</div></GridItem>
+    <GridItem><div className="demo">Item</div></GridItem>
+  </StyledGrid>
+</Playground>
+
+<Playground>
+  <StyledGrid fraction={1/3} aEnd>
+    <GridItem><div className="demo">Item</div></GridItem>
+    <GridItem><div className="demo">Item<br/>three<br/>lines</div></GridItem>
+    <GridItem><div className="demo">Item</div></GridItem>
+  </StyledGrid>
+</Playground>
+
+### Grid Item Vertical Alignment
+
+Align each item independently in the row
+
+<Playground>
+  <StyledGrid>
+    <GridItem fraction={1/4} aTop><div className="demo">Item</div></GridItem>
+    <GridItem fraction={1/4} ><div className="demo">Item<br/>three<br/>lines</div></GridItem>
+    <GridItem fraction={1/4} aCenter><div className="demo">Item</div></GridItem>
+    <GridItem fraction={1/4} aEnd><div className="demo">Item</div></GridItem>
+  </StyledGrid>
+</Playground>
+
+## Distribution
+
+### Space Between
+
+<Playground>
+  <StyledGrid jBetween>
+    <GridItem fraction={1/6} aTop><div className="demo">Item</div></GridItem>
+    <GridItem fraction={1/6} aCenter><div className="demo">Item</div></GridItem>
+    <GridItem fraction={1/6} aEnd><div className="demo">Item</div></GridItem>
+  </StyledGrid>
+</Playground>
+
+### Space Around
+
+<Playground>
+  <StyledGrid jAround>
+    <GridItem fraction={1/6} aTop><div className="demo">Item</div></GridItem>
+    <GridItem fraction={1/6} aCenter><div className="demo">Item</div></GridItem>
+    <GridItem fraction={1/6} aEnd><div className="demo">Item</div></GridItem>
+  </StyledGrid>
+</Playground>
+
+## Ordering
+
+### Item First Position
+
+<Playground>
+  <StyledGrid jAround>
+    <GridItem fraction={1/4}><div className="demo">Item 1</div></GridItem>
+    <GridItem fraction={1/4}><div className="demo">Item 2</div></GridItem>
+    <GridItem position='first' fraction={1/4}><div className="demo" style={{ background: '#587193', fontWeight: 700, color: 'white' }}>Item 3</div></GridItem>
+    <GridItem fraction={1/4}><div className="demo">Item 4</div></GridItem>
+  </StyledGrid>
+</Playground>
+
+### Item Last Position
+
+<Playground>
+  <StyledGrid jAround>
+    <GridItem position='last' fraction={1/4}><div className="demo" style={{ background: '#587193', fontWeight: 700, color: 'white' }}>Item 1</div></GridItem>
+    <GridItem fraction={1/4}><div className="demo">Item 2</div></GridItem>
+    <GridItem fraction={1/4}><div className="demo">Item 3</div></GridItem>
+    <GridItem fraction={1/4}><div className="demo">Item 4</div></GridItem>
+  </StyledGrid>
+</Playground>
+
+### Pull & Push Item
+
+When using pull & push, use noWrap to prevent items to wrap on new row.
+
+<Playground>
+  <StyledGrid noWrap>
+    <GridItem pull><div className="demo">Item pull</div></GridItem>
+    <GridItem><div className="demo">Item</div></GridItem>
+    <GridItem push><div className="demo">Item push</div></GridItem>
+  </StyledGrid>
+</Playground>
+
+### Nested Grid
+
+<Playground>
+  <StyledGrid verticalStretch>
+    <GridItem fractionWithBp={['1/2@tablet']}>
+      <StyledGrid verticalStretch>
+        <GridItem fractionWithBp={['1/2@tablet']}><div className="demo">Item</div></GridItem>
+        <GridItem fractionWithBp={['1/2@laptop']}>
+          <StyledGrid verticalStretch>
+            <GridItem fractionWithBp={['1/2@laptop']}><div className="demo">Item</div></GridItem>
+            <GridItem fractionWithBp={['1/2@laptop']}><div className="demo">Item<br/>2 lines</div></GridItem>
+          </StyledGrid>
+        </GridItem>
+        <GridItem fractionWithBp={['1/2@tablet']}><div className="demo">Item</div></GridItem>
+        <GridItem fractionWithBp={['1/2@tablet']}><div className="demo">Item</div></GridItem>
+      </StyledGrid>
+    </GridItem>
+    <GridItem fractionWithBp={['1/2@tablet']}><div className="demo">Item</div></GridItem>
+  </StyledGrid>
+</Playground>
