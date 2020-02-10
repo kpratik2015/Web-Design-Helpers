@@ -17,5 +17,5 @@ export default {
   /**Branch used to edit your document when clicking on Github button. */
   editBranch: 'master',
   title: 'Pratik Web Nuggets',
-  menu: ['Home', 'Branding']
+  menu: ['Home', 'Branding', 'Grid']
 };

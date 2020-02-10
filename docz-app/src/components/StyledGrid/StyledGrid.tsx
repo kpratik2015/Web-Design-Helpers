@@ -1,30 +1,39 @@
 import styled, { css } from 'styled-components/macro';
 
-const StyledGrid = styled.div<{
+interface IStyledGrid {
   fraction?: number;
-  verticalStretch?: boolean;
-  auto?: boolean;
-  autoFill?: boolean;
-  jStart?: boolean;
-  jCenter?: boolean;
-  jEnd?: boolean;
-  jBetween?: boolean;
-  jAround?: boolean;
-  aTop?: boolean;
-  aCenter?: boolean;
-  aEnd?: boolean;
+  verticalStretch?: boolean | string;
+  auto?: boolean | string;
+  autoFill?: boolean | string;
+  jStart?: boolean | string;
+  jCenter?: boolean | string;
+  jEnd?: boolean | string;
+  jBetween?: boolean | string;
+  jAround?: boolean | string;
+  aTop?: boolean | string;
+  aCenter?: boolean | string;
+  aEnd?: boolean | string;
   gutter?: string;
   fractionWithBp?: string[];
-  noWrap?: boolean;
-}>`
+  noWrap?: boolean | string;
+}
+
+const StyledGrid = styled.div<IStyledGrid>`
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  ${({ noWrap }) =>
-    noWrap &&
-    css`
-      flex-wrap: nowrap;
-    `}
+  ${({ noWrap, theme: { qBreakpoints } }) =>
+    noWrap
+      ? typeof noWrap === 'string'
+        ? css`
+            @media ${qBreakpoints[noWrap]} {
+              flex-wrap: nowrap;
+            }
+          `
+        : css`
+            flex-wrap: nowrap;
+          `
+      : ''}
   ${({ gutter = 'md', theme: { gutter: tgutter } }) => {
     const tgutterUnsafe = tgutter as { [key: string]: any };
     return gutter === 'none'
@@ -35,47 +44,113 @@ const StyledGrid = styled.div<{
           margin-bottom: -${tgutterUnsafe[gutter] / 2}rem;
         `;
   }}
-  ${({ verticalStretch }) =>
+  ${({ verticalStretch, theme: { qBreakpoints } }) =>
     verticalStretch
-      ? css`
-          align-items: stretch;
-        `
+      ? typeof verticalStretch === 'string'
+        ? css`
+            @media ${qBreakpoints[verticalStretch]} {
+              align-items: stretch;
+            }
+          `
+        : css`
+            align-items: stretch;
+          `
       : ''}
-  ${({ jStart, jCenter, jEnd, jBetween, jAround }) =>
+  ${({ jStart, theme: { qBreakpoints } }) =>
     jStart
-      ? css`
-          justify-content: flex-start;
-        `
-      : jCenter
-      ? css`
-          justify-content: center;
-        `
-      : jEnd
-      ? css`
-          justify-content: flex-end;
-        `
-      : jBetween
-      ? css`
-          justify-content: space-between;
-        `
-      : jAround
-      ? css`
-          justify-content: space-around;
-        `
+      ? typeof jStart === 'string'
+        ? css`
+            @media ${qBreakpoints[jStart]} {
+              justify-content: flex-start;
+            }
+          `
+        : css`
+            justify-content: flex-start;
+          `
       : ''}
-  ${({ aTop, aCenter, aEnd }) =>
+  ${({ jCenter, theme: { qBreakpoints } }) =>
+    jCenter
+      ? typeof jCenter === 'string'
+        ? css`
+            @media ${qBreakpoints[jCenter]} {
+              justify-content: flex-end;
+            }
+          `
+        : css`
+            justify-content: flex-end;
+          `
+      : ''}
+  ${({ jEnd, theme: { qBreakpoints } }) =>
+    jEnd
+      ? typeof jEnd === 'string'
+        ? css`
+            @media ${qBreakpoints[jEnd]} {
+              justify-content: center;
+            }
+          `
+        : css`
+            justify-content: center;
+          `
+      : ''}
+  ${({ jBetween, theme: { qBreakpoints } }) =>
+    jBetween
+      ? typeof jBetween === 'string'
+        ? css`
+            @media ${qBreakpoints[jBetween]} {
+              justify-content: space-between;
+            }
+          `
+        : css`
+            justify-content: space-between;
+          `
+      : ''}
+  ${({ jAround, theme: { qBreakpoints } }) =>
+    jAround
+      ? typeof jAround === 'string'
+        ? css`
+            @media ${qBreakpoints[jAround]} {
+              justify-content: space-around;
+            }
+          `
+        : css`
+            justify-content: space-around;
+          `
+      : ''}
+  ${({ aTop, theme: { qBreakpoints } }) =>
     aTop
-      ? css`
-          align-items: flex-start;
-        `
-      : aCenter
-      ? css`
-          align-items: center;
-        `
-      : aEnd
-      ? css`
-          align-items: flex-end;
-        `
+      ? typeof aTop === 'string'
+        ? css`
+            @media ${qBreakpoints[aTop]} {
+              align-items: flex-start;
+            }
+          `
+        : css`
+            align-items: flex-start;
+          `
+      : ''}
+  ${({ aCenter, theme: { qBreakpoints } }) =>
+    aCenter
+      ? typeof aCenter === 'string'
+        ? css`
+            @media ${qBreakpoints[aCenter]} {
+              align-items: center;
+            }
+          `
+        : css`
+            align-items: center;
+          `
+      : ''}
+  ${({ aEnd, theme: { qBreakpoints } }) =>
+    aEnd
+      ? typeof aEnd === 'string'
+        ? css`
+            @media ${qBreakpoints[aEnd]} {
+              align-items: flex-end;
+            }
+          `
+        : css`
+            align-items: flex-end;
+          `
       : ''}
   & > * {
     flex: 0 1 auto;
@@ -95,29 +170,56 @@ const StyledGrid = styled.div<{
         max-width: ${100 * fraction}%;
         flex-basis: ${100 * fraction}%;
       `}
-    ${({ verticalStretch }) =>
-      verticalStretch &&
-      css`
-        display: flex;
-        flex-direction: column;
-        & > * {
-          flex: 1 0 auto;
-        }
-      `}
-    ${({ auto }) =>
-      auto &&
-      css`
-        flex-grow: 0;
-        max-width: none;
-        flex-basis: auto;
-      `}
-    ${({ autoFill }) =>
-      autoFill &&
-      css`
-        flex-grow: 1;
-        max-width: none;
-        flex-basis: auto;
-      `}
+    ${({ verticalStretch, theme: { qBreakpoints } }) =>
+      verticalStretch && typeof verticalStretch === 'string'
+        ? css`
+            @media ${qBreakpoints[verticalStretch]} {
+              display: flex;
+              flex-direction: column;
+              & > * {
+                flex: 1 0 auto;
+              }
+            }
+          `
+        : css`
+            display: flex;
+            flex-direction: column;
+            & > * {
+              flex: 1 0 auto;
+            }
+          `}
+    ${({ auto, theme: { qBreakpoints } }) =>
+      auto
+        ? typeof auto === 'string'
+          ? css`
+              @media ${qBreakpoints[auto]} {
+                flex-grow: 0;
+                max-width: none;
+                flex-basis: auto;
+              }
+            `
+          : css`
+              flex-grow: 0;
+              max-width: none;
+              flex-basis: auto;
+            `
+        : ''}
+    ${({ autoFill, theme: { qBreakpoints } }) =>
+      autoFill
+        ? typeof autoFill === 'string'
+          ? css`
+              @media ${qBreakpoints[autoFill]} {
+                flex-grow: 1;
+                max-width: none;
+                flex-basis: auto;
+              }
+            `
+          : css`
+              flex-grow: 1;
+              max-width: none;
+              flex-basis: auto;
+            `
+        : ''}
     ${({ fractionWithBp, theme: { qBreakpoints } }) =>
       fractionWithBp &&
       fractionWithBp.map(x => {
@@ -140,16 +242,18 @@ enum EPositions {
   last = 'last'
 }
 
-const GridItem = styled.div<{
+interface IGridItem {
   fraction?: number;
   fractionWithBp?: string[];
-  aTop?: boolean;
-  aCenter?: boolean;
-  aEnd?: boolean;
+  aTop?: boolean | string;
+  aCenter?: boolean | string;
+  aEnd?: boolean | string;
   position?: EPositions;
-  pull?: boolean;
-  push?: boolean;
-}>`
+  pull?: boolean | string;
+  push?: boolean | string;
+}
+
+const GridItem = styled.div<IGridItem>`
   ${({ fraction }) =>
     fraction &&
     css`
@@ -170,19 +274,41 @@ const GridItem = styled.div<{
         }
       `;
     })}
-  ${({ aTop, aCenter, aEnd }) =>
+  ${({ aTop, theme: { qBreakpoints } }) =>
     aTop
-      ? css`
-          align-self: flex-start;
-        `
-      : aCenter
-      ? css`
-          align-self: center;
-        `
-      : aEnd
-      ? css`
-          align-self: flex-end;
-        `
+      ? typeof aTop === 'string'
+        ? css`
+            @media ${qBreakpoints[aTop]} {
+              align-self: flex-start;
+            }
+          `
+        : css`
+            align-self: flex-start;
+          `
+      : ''}
+  ${({ aCenter, theme: { qBreakpoints } }) =>
+    aCenter
+      ? typeof aCenter === 'string'
+        ? css`
+            @media ${qBreakpoints[aCenter]} {
+              align-self: center;
+            }
+          `
+        : css`
+            align-self: center;
+          `
+      : ''}
+  ${({ aEnd, theme: { qBreakpoints } }) =>
+    aEnd
+      ? typeof aEnd === 'string'
+        ? css`
+            @media ${qBreakpoints[aEnd]} {
+              align-self: flex-end;
+            }
+          `
+        : css`
+            align-self: flex-end;
+          `
       : ''}
   ${({ position, fraction = 1 }) =>
     position === EPositions.first
@@ -194,19 +320,35 @@ const GridItem = styled.div<{
           order: ${100 / (fraction * 100) + 1};
         `
       : ''}
-  ${({ push, pull }) =>
+  ${({ push, pull, theme: { qBreakpoints } }) =>
     push
-      ? css`
-          order: 11;
-          margin-left: auto;
-          flex: none;
-        `
+      ? typeof push === 'string'
+        ? css`
+            @media ${qBreakpoints[push]} {
+              order: 11;
+              margin-left: auto;
+              flex: none;
+            }
+          `
+        : css`
+            order: 11;
+            margin-left: auto;
+            flex: none;
+          `
       : pull
-      ? css`
-          order: -1;
-          margin-right: auto;
-          flex: none;
-        `
+      ? typeof pull === 'string'
+        ? css`
+            @media ${qBreakpoints[pull]} {
+              order: -1;
+              margin-right: auto;
+              flex: none;
+            }
+          `
+        : css`
+            order: -1;
+            margin-right: auto;
+            flex: none;
+          `
       : ''}
   .demo {
     color: #253c5b;
