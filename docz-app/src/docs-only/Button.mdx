@@ -1,0 +1,41 @@
+---
+name: Button
+menu: Elements
+route: /elements/button
+---
+
+import { Playground, Props } from "docz";
+import { Button } from "../elements/Button";
+import StyledGrid, { GridItem } from "../components/StyledGrid/StyledGrid";
+import { ArrowNarrowRight } from "@styled-icons/heroicons-outline/ArrowNarrowRight";
+
+# Button
+
+The Button component is used to trigger an action or event, such as submitting a form, opening a Dialog, canceling an action, or performing a delete operation.
+
+<Playground>
+  <StyledGrid verticalStretch fractionWithBp={['1/2@tablet', '1/2@laptop']}>
+    <GridItem>
+      <Button bgColor="#decc62" btnType="1">Sign Up</Button>
+    </GridItem>
+    <GridItem>
+      <Button bgColor="#00bbb4" btnType="1" postIcon={<ArrowNarrowRight size={24} />}>Buy Now</Button>
+    </GridItem>
+    <GridItem>
+      <Button btnType="2" rounded={true} hoverAnimation={true} animatedIcon={<ArrowNarrowRight size={18} />}>Learn More</Button>
+    </GridItem>
+    <GridItem>
+      <Button btnType="2" gradient="linear-gradient(130deg, #3bdbd0 0%, #00657f 80%)">Subscribe</Button>
+    </GridItem>
+    <GridItem>
+      <div style={{backgroundColor: "hsl(215, 24%, 90%)", height: "100px", display: "flex", alignItems: "center", justifyContent: "center"}}>
+        <Button btnType="3">Neomorph</Button>
+      </div>
+    </GridItem>
+  </StyledGrid>
+</Playground>
+
+
+**References**
+- [Neumorphism (Soft UI) in User interface design - Tutorial](https://uxplanet.org/neumorphism-in-user-interface-tutorial-c353698ac5c0)
+- [Neumorphism and CSS](https://css-tricks.com/neumorphism-and-css/)
