@@ -12,5 +12,8 @@ import { Navbar } from "../elements/Navbar";
 
 <Playground>
   <h3>Type 1</h3>
-  <Navbar navType="1" />
+  <div id="mock-body" style={{ height: "500px", width: "100%", overflow: "hidden", position: "relative" }}>
+    <Navbar navType="1" isMobileView={false} />
+    <div className="site-inner">Some content</div>
+  </div>
 </Playground>
