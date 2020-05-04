@@ -18,22 +18,37 @@ The grid works with StyledGrid container and GridItem as the grid items.
 - StyledGrid has following props available:
 
 ```typescript
-interface IStyledGrid = {
+
+type TBreakpoints =
+  | "mobileS"
+  | "mobileM"
+  | "mobileL"
+  | "tablet"
+  | "laptop"
+  | "laptopL"
+  | "desktop";
+
+type TGutter = "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl" | "none";
+
+interface IStyledGrid {
+  /** fraction: flex-basis % */
   fraction?: number;
-  verticalStretch?: boolean | string;
-  auto?: boolean | string;
-  autoFill?: boolean | string;
-  jStart?: boolean | string;
-  jCenter?: boolean | string;
-  jEnd?: boolean | string;
-  jBetween?: boolean | string;
-  jAround?: boolean | string;
-  aTop?: boolean | string;
-  aCenter?: boolean | string;
-  aEnd?: boolean | string;
-  gutter?: string;
+  verticalStretch?: boolean | TBreakpoints;
+  /** auto: flex-basis */
+  auto?: boolean | TBreakpoints;
+  /** autoFill: flex-grow */
+  autoFill?: boolean | TBreakpoints;
+  jStart?: boolean | TBreakpoints;
+  jCenter?: boolean | TBreakpoints;
+  jEnd?: boolean | TBreakpoints;
+  jBetween?: boolean | TBreakpoints;
+  jAround?: boolean | TBreakpoints;
+  aTop?: boolean | TBreakpoints;
+  aCenter?: boolean | TBreakpoints;
+  aEnd?: boolean | TBreakpoints;
+  gutter?: TGutter;
   fractionWithBp?: string[];
-  noWrap?: boolean | string;
+  noWrap?: boolean | TBreakpoints;
 }
 ```
 
@@ -41,15 +56,20 @@ interface IStyledGrid = {
 - GridItem has following props available:
 
 ```typescript
+enum EPositions {
+  first = "first",
+  last = "last",
+}
+
 interface IGridItem {
   fraction?: number;
   fractionWithBp?: string[];
-  aTop?: boolean | string;
-  aCenter?: boolean | string;
-  aEnd?: boolean | string;
+  aTop?: boolean | TBreakpoints;
+  aCenter?: boolean | TBreakpoints;
+  aEnd?: boolean | TBreakpoints;
   position?: EPositions;
-  pull?: boolean | string;
-  push?: boolean | string;
+  pull?: boolean | TBreakpoints;
+  push?: boolean | TBreakpoints;
 }
 ```
 

@@ -1,19 +1,33 @@
-import styled, { css } from 'styled-components/macro';
+import styled, { css } from "styled-components/macro";
+
+type TBreakpoints =
+  | "mobileS"
+  | "mobileM"
+  | "mobileL"
+  | "tablet"
+  | "laptop"
+  | "laptopL"
+  | "desktop";
+
+type TGutter = "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl" | "none";
 
 interface IStyledGrid {
+  /** fraction: flex-basis % */
   fraction?: number;
-  verticalStretch?: boolean | string;
-  auto?: boolean | string;
-  autoFill?: boolean | string;
-  jStart?: boolean | string;
-  jCenter?: boolean | string;
-  jEnd?: boolean | string;
-  jBetween?: boolean | string;
-  jAround?: boolean | string;
-  aTop?: boolean | string;
-  aCenter?: boolean | string;
-  aEnd?: boolean | string;
-  gutter?: string;
+  verticalStretch?: boolean | TBreakpoints;
+  /** auto: flex-basis */
+  auto?: boolean | TBreakpoints;
+  /** autoFill: flex-grow */
+  autoFill?: boolean | TBreakpoints;
+  jStart?: boolean | TBreakpoints;
+  jCenter?: boolean | TBreakpoints;
+  jEnd?: boolean | TBreakpoints;
+  jBetween?: boolean | TBreakpoints;
+  jAround?: boolean | TBreakpoints;
+  aTop?: boolean | TBreakpoints;
+  aCenter?: boolean | TBreakpoints;
+  aEnd?: boolean | TBreakpoints;
+  gutter?: TGutter;
   fractionWithBp?: string[];
   noWrap?: boolean | string;
 }
@@ -24,7 +38,7 @@ const StyledGrid = styled.div<IStyledGrid>`
   align-items: flex-start;
   ${({ noWrap, theme: { qBreakpoints } }) =>
     noWrap
-      ? typeof noWrap === 'string'
+      ? typeof noWrap === "string"
         ? css`
             @media ${qBreakpoints[noWrap]} {
               flex-wrap: nowrap;
@@ -33,11 +47,11 @@ const StyledGrid = styled.div<IStyledGrid>`
         : css`
             flex-wrap: nowrap;
           `
-      : ''}
-  ${({ gutter = 'md', theme: { gutter: tgutter } }) => {
+      : ""}
+  ${({ gutter = "md", theme: { gutter: tgutter } }) => {
     const tgutterUnsafe = tgutter as { [key: string]: any };
-    return gutter === 'none'
-      ? ''
+    return gutter === "none"
+      ? ""
       : css`
           margin-left: -${tgutterUnsafe[gutter]}rem;
           margin-top: -${tgutterUnsafe[gutter] / 2}rem;
@@ -46,7 +60,7 @@ const StyledGrid = styled.div<IStyledGrid>`
   }}
   ${({ verticalStretch, theme: { qBreakpoints } }) =>
     verticalStretch
-      ? typeof verticalStretch === 'string'
+      ? typeof verticalStretch === "string"
         ? css`
             @media ${qBreakpoints[verticalStretch]} {
               align-items: stretch;
@@ -55,10 +69,10 @@ const StyledGrid = styled.div<IStyledGrid>`
         : css`
             align-items: stretch;
           `
-      : ''}
+      : ""}
   ${({ jStart, theme: { qBreakpoints } }) =>
     jStart
-      ? typeof jStart === 'string'
+      ? typeof jStart === "string"
         ? css`
             @media ${qBreakpoints[jStart]} {
               justify-content: flex-start;
@@ -67,34 +81,34 @@ const StyledGrid = styled.div<IStyledGrid>`
         : css`
             justify-content: flex-start;
           `
-      : ''}
+      : ""}
   ${({ jCenter, theme: { qBreakpoints } }) =>
     jCenter
-      ? typeof jCenter === 'string'
+      ? typeof jCenter === "string"
         ? css`
             @media ${qBreakpoints[jCenter]} {
-              justify-content: flex-end;
-            }
-          `
-        : css`
-            justify-content: flex-end;
-          `
-      : ''}
-  ${({ jEnd, theme: { qBreakpoints } }) =>
-    jEnd
-      ? typeof jEnd === 'string'
-        ? css`
-            @media ${qBreakpoints[jEnd]} {
               justify-content: center;
             }
           `
         : css`
             justify-content: center;
           `
-      : ''}
+      : ""}
+  ${({ jEnd, theme: { qBreakpoints } }) =>
+    jEnd
+      ? typeof jEnd === "string"
+        ? css`
+            @media ${qBreakpoints[jEnd]} {
+              justify-content: flex-end;
+            }
+          `
+        : css`
+            justify-content: flex-end;
+          `
+      : ""}
   ${({ jBetween, theme: { qBreakpoints } }) =>
     jBetween
-      ? typeof jBetween === 'string'
+      ? typeof jBetween === "string"
         ? css`
             @media ${qBreakpoints[jBetween]} {
               justify-content: space-between;
@@ -103,10 +117,10 @@ const StyledGrid = styled.div<IStyledGrid>`
         : css`
             justify-content: space-between;
           `
-      : ''}
+      : ""}
   ${({ jAround, theme: { qBreakpoints } }) =>
     jAround
-      ? typeof jAround === 'string'
+      ? typeof jAround === "string"
         ? css`
             @media ${qBreakpoints[jAround]} {
               justify-content: space-around;
@@ -115,10 +129,10 @@ const StyledGrid = styled.div<IStyledGrid>`
         : css`
             justify-content: space-around;
           `
-      : ''}
+      : ""}
   ${({ aTop, theme: { qBreakpoints } }) =>
     aTop
-      ? typeof aTop === 'string'
+      ? typeof aTop === "string"
         ? css`
             @media ${qBreakpoints[aTop]} {
               align-items: flex-start;
@@ -127,10 +141,10 @@ const StyledGrid = styled.div<IStyledGrid>`
         : css`
             align-items: flex-start;
           `
-      : ''}
+      : ""}
   ${({ aCenter, theme: { qBreakpoints } }) =>
     aCenter
-      ? typeof aCenter === 'string'
+      ? typeof aCenter === "string"
         ? css`
             @media ${qBreakpoints[aCenter]} {
               align-items: center;
@@ -139,10 +153,10 @@ const StyledGrid = styled.div<IStyledGrid>`
         : css`
             align-items: center;
           `
-      : ''}
+      : ""}
   ${({ aEnd, theme: { qBreakpoints } }) =>
     aEnd
-      ? typeof aEnd === 'string'
+      ? typeof aEnd === "string"
         ? css`
             @media ${qBreakpoints[aEnd]} {
               align-items: flex-end;
@@ -151,14 +165,14 @@ const StyledGrid = styled.div<IStyledGrid>`
         : css`
             align-items: flex-end;
           `
-      : ''}
+      : ""}
   & > * {
     flex: 0 1 auto;
     min-width: 0;
-    ${({ gutter = 'md', theme: { gutter: tgutter } }) => {
+    ${({ gutter = "md", theme: { gutter: tgutter } }) => {
       const tgutterUnsafe = tgutter as { [key: string]: any };
-      return gutter === 'none'
-        ? ''
+      return gutter === "none"
+        ? ""
         : css`
             padding-left: ${tgutterUnsafe[gutter]}rem;
             padding-top: ${tgutterUnsafe[gutter] / 2}rem;
@@ -171,7 +185,7 @@ const StyledGrid = styled.div<IStyledGrid>`
         flex-basis: ${100 * fraction}%;
       `}
     ${({ verticalStretch, theme: { qBreakpoints } }) =>
-      verticalStretch && typeof verticalStretch === 'string'
+      verticalStretch && typeof verticalStretch === "string"
         ? css`
             @media ${qBreakpoints[verticalStretch]} {
               display: flex;
@@ -190,7 +204,7 @@ const StyledGrid = styled.div<IStyledGrid>`
           `}
     ${({ auto, theme: { qBreakpoints } }) =>
       auto
-        ? typeof auto === 'string'
+        ? typeof auto === "string"
           ? css`
               @media ${qBreakpoints[auto]} {
                 flex-grow: 0;
@@ -203,10 +217,10 @@ const StyledGrid = styled.div<IStyledGrid>`
               max-width: none;
               flex-basis: auto;
             `
-        : ''}
+        : ""}
     ${({ autoFill, theme: { qBreakpoints } }) =>
       autoFill
-        ? typeof autoFill === 'string'
+        ? typeof autoFill === "string"
           ? css`
               @media ${qBreakpoints[autoFill]} {
                 flex-grow: 1;
@@ -219,14 +233,14 @@ const StyledGrid = styled.div<IStyledGrid>`
               max-width: none;
               flex-basis: auto;
             `
-        : ''}
+        : ""}
     ${({ fractionWithBp, theme: { qBreakpoints } }) =>
       fractionWithBp &&
-      fractionWithBp.map(x => {
-        const [fraction = '1/1', bp] = x.split('@');
-        const fractionalBits = fraction.split('/');
+      fractionWithBp.map((x) => {
+        const [fraction = "1/1", bp] = x.split("@");
+        const fractionalBits = fraction.split("/");
         const fNumber =
-          parseInt(fractionalBits[0], 10) / parseInt(fractionalBits[1], 10);
+          parseFloat(fractionalBits[0]) / parseFloat(fractionalBits[1]);
         return css`
           @media ${qBreakpoints[bp]} {
             max-width: ${100 * fNumber}%;
@@ -238,19 +252,19 @@ const StyledGrid = styled.div<IStyledGrid>`
 `;
 
 enum EPositions {
-  first = 'first',
-  last = 'last'
+  first = "first",
+  last = "last",
 }
 
 interface IGridItem {
   fraction?: number;
   fractionWithBp?: string[];
-  aTop?: boolean | string;
-  aCenter?: boolean | string;
-  aEnd?: boolean | string;
+  aTop?: boolean | TBreakpoints;
+  aCenter?: boolean | TBreakpoints;
+  aEnd?: boolean | TBreakpoints;
   position?: EPositions;
-  pull?: boolean | string;
-  push?: boolean | string;
+  pull?: boolean | TBreakpoints;
+  push?: boolean | TBreakpoints;
 }
 
 const GridItem = styled.div<IGridItem>`
@@ -262,11 +276,11 @@ const GridItem = styled.div<IGridItem>`
     `}
   ${({ fractionWithBp, theme: { qBreakpoints } }) =>
     fractionWithBp &&
-    fractionWithBp.map(x => {
-      const [fraction = '1/1', bp] = x.split('@');
-      const fractionalBits = fraction.split('/');
+    fractionWithBp.map((x) => {
+      const [fraction = "1/1", bp] = x.split("@");
+      const fractionalBits = fraction.split("/");
       const fNumber =
-        parseInt(fractionalBits[0], 10) / parseInt(fractionalBits[1], 10);
+        parseFloat(fractionalBits[0]) / parseFloat(fractionalBits[1]);
       return css`
         @media ${qBreakpoints[bp]} {
           max-width: ${100 * fNumber}%;
@@ -276,7 +290,7 @@ const GridItem = styled.div<IGridItem>`
     })}
   ${({ aTop, theme: { qBreakpoints } }) =>
     aTop
-      ? typeof aTop === 'string'
+      ? typeof aTop === "string"
         ? css`
             @media ${qBreakpoints[aTop]} {
               align-self: flex-start;
@@ -285,10 +299,10 @@ const GridItem = styled.div<IGridItem>`
         : css`
             align-self: flex-start;
           `
-      : ''}
+      : ""}
   ${({ aCenter, theme: { qBreakpoints } }) =>
     aCenter
-      ? typeof aCenter === 'string'
+      ? typeof aCenter === "string"
         ? css`
             @media ${qBreakpoints[aCenter]} {
               align-self: center;
@@ -297,10 +311,10 @@ const GridItem = styled.div<IGridItem>`
         : css`
             align-self: center;
           `
-      : ''}
+      : ""}
   ${({ aEnd, theme: { qBreakpoints } }) =>
     aEnd
-      ? typeof aEnd === 'string'
+      ? typeof aEnd === "string"
         ? css`
             @media ${qBreakpoints[aEnd]} {
               align-self: flex-end;
@@ -309,7 +323,7 @@ const GridItem = styled.div<IGridItem>`
         : css`
             align-self: flex-end;
           `
-      : ''}
+      : ""}
   ${({ position, fraction = 1 }) =>
     position === EPositions.first
       ? css`
@@ -319,10 +333,10 @@ const GridItem = styled.div<IGridItem>`
       ? css`
           order: ${100 / (fraction * 100) + 1};
         `
-      : ''}
+      : ""}
   ${({ push, pull, theme: { qBreakpoints } }) =>
     push
-      ? typeof push === 'string'
+      ? typeof push === "string"
         ? css`
             @media ${qBreakpoints[push]} {
               order: 11;
@@ -336,7 +350,7 @@ const GridItem = styled.div<IGridItem>`
             flex: none;
           `
       : pull
-      ? typeof pull === 'string'
+      ? typeof pull === "string"
         ? css`
             @media ${qBreakpoints[pull]} {
               order: -1;
@@ -349,7 +363,7 @@ const GridItem = styled.div<IGridItem>`
             margin-right: auto;
             flex: none;
           `
-      : ''}
+      : ""}
   .demo {
     color: #253c5b;
     background: #e7eef9;

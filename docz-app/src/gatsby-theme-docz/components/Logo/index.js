@@ -1,9 +1,9 @@
 /** @jsx jsx */
-import { jsx, Flex } from 'theme-ui';
-import { Link, useConfig } from 'docz';
-import logo from './logo.jpg';
-import * as styles from './styles';
-import { Styled } from 'theme-ui';
+import { jsx, Flex } from "theme-ui";
+import { Link, useConfig } from "docz";
+import logo from "./logo.png";
+import * as styles from "./styles";
+import { Styled } from "theme-ui";
 
 export const Logo = () => {
   const config = useConfig();
